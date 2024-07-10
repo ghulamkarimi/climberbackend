@@ -5,9 +5,10 @@ import Register from "../../components/auth/Register";
 import { useSelector } from "react-redux";
 import { RootState } from "@/feature/store/store";
 
-const { isLogin } = useSelector((state: RootState) => state.app);
 
 const authPage = () => {
+  const { isLogin } = useSelector((state: RootState) => state.app);
+
   return (
     <div>
       <div className={`${isLogin === false ? "flex" : "hidden"}`}>

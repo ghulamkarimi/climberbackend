@@ -75,7 +75,7 @@ const Register = () => {
             <div>
               <button
               onClick={()=>{
-                dispatch(setIslogin(isLogin))
+                dispatch(setIslogin(false))
               }}
               className=" bg-green-400 hover:bg-green-300 cursor-pointer px-4 py-1 rounded-lg w-1/3">
                 Register
@@ -92,7 +92,7 @@ const Register = () => {
           <div className=" w-full text-center">
               <button
                onClick={()=>{
-                dispatch(setIslogin(!isLogin))
+                dispatch(setIslogin(true))
               }}
               className=" bg-red-600 hover:bg-red-400 cursor-pointer px-4 py-1 rounded-lg w-1/3">
                 SigIn
