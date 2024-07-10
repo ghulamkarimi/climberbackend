@@ -1,15 +1,44 @@
 import { setIslogin } from "@/feature/reducers/appSlice";
-import { RootState } from "@/feature/store/store";
-
+import { AppDispatch, RootState } from "@/feature/store/store";
+import * as Yup from "yup"
 import { useDispatch, useSelector } from "react-redux";
+import { useFormik } from "formik";
+import { userRegisterApi } from "@/feature/reducers/userSlice";
+import { NotificationService } from "@/service/notificationService/Notification";
+
 
 const Register = () => {
     const { isLogin } = useSelector((state: RootState) => state.app);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const formikSchema= Yup.object({
+        firstName:Yup.string().min(3,"first name should be 3 charachter").max(30, "first name should not more then 30 charachter"),
+        lastName:Yup.string().min(3,"last name should be 3 charachter").max(30, "last name should not more then 30 charachter"),
+        email:Yup.string().matches(emailRegex,"invalid E-Mail format").required("E-mail is required"),
+        password:Yup.string().min(6,"password shold more then 6 charachter"),
+        confirmPassword:Yup.string().min(6,"password shold more then 6 charachter"),
 
-    const handleRegister = () => {
-        dispatch(setIslogin(false));
-    };
+    })
+    const formik = useFormik({
+        initialValues:{
+            firstName:"",
+            lastName:"",
+            email:"",
+            password:"",
+            confirmPassword:""
+        },
+        validationSchema:formikSchema,
+        onSubmit:async (values)=>{
+          try {
+            const response = await dispatch(userRegisterApi(values)).unwrap()
+            NotificationService.success(response.message)
+          } catch (error:any) {
+            NotificationService.error(error.message)
+          }
+        }
+    })
+
+ 
 
     const handleSignIn = () => {
         dispatch(setIslogin(true));
@@ -28,12 +57,19 @@ const Register = () => {
                     <div className="w-full text-center font-bold text-2xl">
                         <h1>Register</h1>
                     </div>
-                    <form className="flex flex-col gap-4">
+                    <form 
+                    onSubmit={formik.handleSubmit}
+                    className="flex flex-col gap-4
+                    ">
                         <div className="flex flex-col">
                             <label className="font-bold font-serif" htmlFor="firstName">
                                 FirstName
                             </label>
                             <input
+                                name="firstName"
+                                value={formik.values.firstName}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                                 type="text"
                                 id="firstName"
                                 className="outline-none border-b-2 border-green-500"
@@ -44,6 +80,10 @@ const Register = () => {
                                 LastName
                             </label>
                             <input
+                             name="lastName"
+                             value={formik.values.lastName}
+                             onChange={formik.handleChange}
+                             onBlur={formik.handleBlur}
                                 type="text"
                                 id="lastName"
                                 className="outline-none border-b-2 border-green-500"
@@ -54,6 +94,10 @@ const Register = () => {
                                 Email
                             </label>
                             <input
+                             name="email"
+                             value={formik.values.email}
+                             onChange={formik.handleChange}
+                             onBlur={formik.handleBlur}
                                 type="email"
                                 id="emailOne"
                                 className="outline-none border-b-2 border-green-500"
@@ -64,6 +108,10 @@ const Register = () => {
                                 Password
                             </label>
                             <input
+                             name=" password"
+                             value={formik.values.password}
+                             onChange={formik.handleChange}
+                             onBlur={formik.handleBlur}
                                 type="password"
                                 id="pass"
                                 className="outline-none border-b-2 border-green-500"
@@ -74,6 +122,10 @@ const Register = () => {
                                 Confirm Password
                             </label>
                             <input
+                             name="confirmPassword"
+                             value={formik.values.confirmPassword}
+                             onChange={formik.handleChange}
+                             onBlur={formik.handleBlur}
                                 type="password"
                                 id="confirmPassword"
                                 className="outline-none border-b-2 border-green-500"
@@ -82,7 +134,11 @@ const Register = () => {
                         <div className="w-full text-center pt-4">
                             <div>
                                 <button
-                                    onClick={handleRegister}
+                                type="submit"
+                                    onClick={()=>{
+                                        dispatch(setIslogin(true))
+                                        
+                                    }}
                                     className="bg-green-400 hover:bg-green-300 cursor-pointer px-4 py-1 rounded-lg w-1/3"
                                 >
                                     Register

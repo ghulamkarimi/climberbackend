@@ -14,5 +14,8 @@ export interface IUser {
         number: string;
         postalCode: string;
     }
+
    
 }
+
+export type TUser = Partial<IUser>

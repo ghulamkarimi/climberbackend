@@ -1,4 +1,5 @@
 import axios from "axios"
+import { TUser } from "@/interface"
 
 
 const Server_Url = "http://localhost:3009"
@@ -6,7 +7,7 @@ const Server_Url = "http://localhost:3009"
 
 
 
-export const userRegister = ()=>{
+export const userRegister = (user:TUser)=>{
     const url = `${Server_Url}/users/register `
-    return axios.post(url)
+    return axios.post(url,user)
 }
