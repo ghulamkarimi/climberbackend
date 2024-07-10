@@ -11,3 +11,10 @@ export const userRegister = (user:TUser)=>{
     const url = `${Server_Url}/users/register `
     return axios.post(url,user)
 }
+
+
+
+export const userLogin = (user:TUser)=>{
+    const url = `${Server_Url}/users/login`
+    return axios.post(url,user)
+}

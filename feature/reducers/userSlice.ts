@@ -1,5 +1,5 @@
 import { IUser, TUser } from "@/interface";
-import { userRegister } from "@/service";
+import { userLogin, userRegister } from "@/service";
 import {
   EntityState,
   createAsyncThunk,
@@ -35,6 +35,20 @@ export const userRegisterApi = createAsyncThunk(
   }
 );
 
+export const userLoginApi = createAsyncThunk(
+    "/users/userLoginApi",
+    async (initialState:TUser) => {
+      try {
+        const response = await userLogin(initialState);
+        console.log("responseDta Login ",response.data)
+        return response.data;
+        
+      } catch (error: any) {
+        throw error.response.data.message;
+      }
+    }
+  );
+
 const userSlice = createSlice({
   name: "users",
   initialState,
@@ -49,9 +63,20 @@ const userSlice = createSlice({
     .addCase(userRegisterApi.fulfilled,userAdapter.addOne)
     .addCase(userRegisterApi.rejected,(state, action)=>{
       state.status="rejected";
-      state.error=action.error.message || "is accourded"
+      state.error=action.error.message || "is accorded"
     })
     
+    .addCase(userLoginApi.pending,(state)=>{
+        state.status="pending"
+    })
+    .addCase(userLoginApi.fulfilled,(state)=>{
+        state.status = "fulfilled";
+        userAdapter.setOne
+    })
+    .addCase(userLoginApi.rejected,(state,action)=>{
+        state.status = "rejected";
+        state.error=action.error.message || "is accorded"
+    })
   },
 });
 
