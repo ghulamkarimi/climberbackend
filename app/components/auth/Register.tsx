@@ -14,8 +14,8 @@ const Register = () => {
     const dispatch = useDispatch<AppDispatch>();
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const formikSchema= Yup.object({
-        firstName:Yup.string().min(3,"first name should be 3 character").max(30, "first name should not more then 30 charachter"),
-        lastName:Yup.string().min(3,"last name should be 3 character").max(30, "last name should not more then 30 charachter"),
+        firstName:Yup.string().min(3,"first name should be 3 character").max(30, "first name should not more then 30 character"),
+        lastName:Yup.string().min(3,"last name should be 3 character").max(30, "last name should not more then 30 character"),
         email:Yup.string().matches(emailRegex,"invalid E-Mail format").required("E-mail is required"),
         password:Yup.string().min(6,"password should more then 6 character"),
         confirmPassword:Yup.string().min(6,"password should more then 6 character"),

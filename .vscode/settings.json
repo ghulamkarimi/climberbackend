@@ -4,6 +4,8 @@
         "Bild",
         "formik",
         "Islogin",
-        "reduxjs"
+        "Orosia",
+        "reduxjs",
+        "toastify"
     ]
 }
