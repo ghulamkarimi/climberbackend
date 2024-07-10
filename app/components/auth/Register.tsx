@@ -33,9 +33,11 @@ const Register = () => {
           try {
             const response = await dispatch(userRegisterApi(values)).unwrap()
             NotificationService.success(response.message)
-            setTimeout(()=>{
+
+            setTimeout(() => {
                 dispatch(setIslogin(true))
-            },3000)
+            }, 3000);
+ 
           } catch (error:any) {
             NotificationService.error(error.message)
           }
@@ -139,7 +141,7 @@ const Register = () => {
                             <div>
                                 <button
                                 type="submit"
-                                    
+ 
                                     className="bg-green-400 hover:bg-green-300 cursor-pointer px-4 py-1 rounded-lg w-1/3"
                                 >
                                     Register
