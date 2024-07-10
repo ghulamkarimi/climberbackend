@@ -4,7 +4,8 @@ import * as Yup from "yup"
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { userRegisterApi } from "@/feature/reducers/userSlice";
-import { NotificationService } from "@/service/notificationService/Notification";
+import { NotificationService } from "@/service/notificationService/NotificationService";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Register = () => {
@@ -32,6 +33,9 @@ const Register = () => {
           try {
             const response = await dispatch(userRegisterApi(values)).unwrap()
             NotificationService.success(response.message)
+            setTimeout(()=>{
+                dispatch(setIslogin(true))
+            },3000)
           } catch (error:any) {
             NotificationService.error(error.message)
           }
@@ -108,12 +112,12 @@ const Register = () => {
                                 Password
                             </label>
                             <input
-                             name=" password"
+                             name="password"
                              value={formik.values.password}
                              onChange={formik.handleChange}
                              onBlur={formik.handleBlur}
                                 type="password"
-                                id="pass"
+                                id="password"
                                 className="outline-none border-b-2 border-green-500"
                             />
                         </div>
@@ -135,10 +139,7 @@ const Register = () => {
                             <div>
                                 <button
                                 type="submit"
-                                    onClick={()=>{
-                                        dispatch(setIslogin(true))
-                                        
-                                    }}
+                                    
                                     className="bg-green-400 hover:bg-green-300 cursor-pointer px-4 py-1 rounded-lg w-1/3"
                                 >
                                     Register
