@@ -1,11 +1,14 @@
+import { ReactNode } from "react";
+
 interface IWrapper {
-    div:React.HTMLProps<HTMLDivElement>
+     children:ReactNode
+    className?:String
 }
 
-const Wrapper = ({div}:IWrapper) => {
+const Wrapper = ({children, className}:IWrapper) => {
     return (
-        <div className="p-2" {...div} >
-            {div.children}
+        <div className={`mx-auto w-full max-w-screen-3xl px-2.5 md:px-10 lg:px-24 ${className}`}>
+            {children}
         </div>
     );
 }

@@ -1,7 +1,12 @@
+import Register from "./components/auth/Register";
+
+ 
+ 
+
  const page = () => {
   return (
-    <div>
-      Enter
+    <div className="">
+  enter
     </div>
   );
  }
