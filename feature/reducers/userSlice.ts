@@ -41,6 +41,7 @@ export const userLoginApi = createAsyncThunk(
       try {
         const response = await userLogin(initialState);
         console.log("responseDta Login ",response.data)
+        localStorage.setItem("token",response.data.token)
         return response.data;
         
       } catch (error: any) {
