@@ -5,11 +5,12 @@ import store from "./store/store";
 import { ReactNode } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import axios from "axios";
 
 interface IReduxProviderProps {
   children: ReactNode;
 }
-
+axios.defaults.withCredentials=true
 const ReduxProvider = ({ children }: IReduxProviderProps) => {
   return (
     <Provider store={store}>

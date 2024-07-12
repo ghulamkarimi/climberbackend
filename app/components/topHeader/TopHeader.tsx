@@ -7,6 +7,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
+import MaxWithWrapper from '@/app/components/MaxWithWrapper';
  
 
 const TopHeader = () => {
@@ -40,7 +41,8 @@ const TopHeader = () => {
     }, []);
 
   return (
-    <div className=" flex justify-between items-center p-2 text-white bg-BACKGROUND">
+    <div className="  bg-BACKGROUND">
+        <MaxWithWrapper className="flex justify-between items-center p-2 text-white">
    <div className="flex gap-2.5 text-l">
    <FaInstagram />
    <CiFacebook />
@@ -90,6 +92,7 @@ const TopHeader = () => {
             )}
         </div>
       </div>
+      </MaxWithWrapper>
     </div>
   );
 };
