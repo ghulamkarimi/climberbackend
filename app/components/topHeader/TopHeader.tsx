@@ -2,8 +2,12 @@
 
 import { DE, FR, GB } from "country-flag-icons/react/1x1";
 import {useEffect, useRef, useState } from "react";
+import { CiFacebook } from "react-icons/ci";
+import { FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
+ 
 
 const TopHeader = () => {
     const [open, setOpen] = useState(false);
@@ -36,7 +40,12 @@ const TopHeader = () => {
     }, []);
 
   return (
-    <div className=" flex justify-between items-center p-2">
+    <div className=" flex justify-between items-center p-2 text-white bg-BACKGROUND">
+   <div className="flex gap-2.5 text-l">
+   <FaInstagram />
+   <CiFacebook />
+        <FaXTwitter />
+   </div>
       <div className=" text-xs font-bold">
         <p> Get early access on launches und offers.</p>
       </div>

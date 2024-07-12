@@ -7,9 +7,16 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    
+    fontFamily: {
+      FONT_VIGA: ["Viga", "sans-serif"],
+      FONT_ROBOTO: ["Roboto", "sans-serif"],
+      FONT_SALSA: ["Salsa", "cursive"],
+      ANTON: ["Anton", "sans-serif"],
+    },
     extend: {
       colors: {
-        BACKGROUNDREGISTER:"#10111a"
+        BACKGROUND:"#10111a"
       },
     },
   },

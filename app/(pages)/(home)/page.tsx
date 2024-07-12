@@ -1,11 +1,16 @@
 import TopHeader from "@/app/components/topHeader/TopHeader";
-import Register from "../../components/auth/Register";
+import MaxWithWrapper from "@/app/components/MaxWithWrapper";
+import Footer from "@/app/components/Footer";
 
 const page = () => {
   return (
-    <div className="">
+    <MaxWithWrapper>
       <TopHeader />
-    </div>
+      <main></main>
+      <footer className="mt-10">
+        <Footer />
+      </footer>
+    </MaxWithWrapper>
   );
 };
 

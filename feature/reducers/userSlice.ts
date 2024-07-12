@@ -70,9 +70,8 @@ const userSlice = createSlice({
     .addCase(userLoginApi.pending,(state)=>{
         state.status="pending"
     })
-    .addCase(userLoginApi.fulfilled,(state)=>{
-        state.status = "fulfilled";
-        userAdapter.setOne
+    .addCase(userLoginApi.fulfilled,(state,action)=>{
+        userAdapter.setOne(state, action.payload.user)
     })
     .addCase(userLoginApi.rejected,(state,action)=>{
         state.status = "rejected";
