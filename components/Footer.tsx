@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import MaxWithWrapper from "./MaxWithWrapper";
 import {
   FaFacebookF,
   FaInstagram,
@@ -9,7 +8,8 @@ import {
 } from "react-icons/fa6";
 import { IoLogoYoutube } from "react-icons/io";
 import { useMediaQuery } from "@react-hook/media-query";
-import { fadeIn } from "./utils/motion";
+import MaxWithWrapper from "@/src/components/MaxWithWrapper";
+import { fadeIn } from "@/src/components/utils/motion";
 
 const Footer = () => {
   const isMediumScreen = useMediaQuery("(max-width: 640px)");
@@ -17,7 +17,7 @@ const Footer = () => {
     <div className="bg-BACKGROUND text-white pt-9 pb-2">
       <MaxWithWrapper className="pt-4">
         <div className="flex flex-col gap-4 md:flex md:flex-row justify-between ">
-          {/* Bereich mit dem Firmenlogo und den Kontaktinformationen */}
+         
           <motion.div
           className="pb-9"
             variants={fadeIn("left", 0.8)}
@@ -32,7 +32,7 @@ const Footer = () => {
                 </h1>
                 <p className="tracking-[10px]">SWEDEN</p>
               </div>
-              {/* Kontaktinformationen */}
+           
               <div className="flex items-center gap-4 my-4 cursor-pointer">
                 <p className="text-xl">Let's talk! </p>
                 <a href="tel:+46 767148636"><FaPhoneFlip className="text-xl text-yellow-500 animate-bounce hover:animate-none " /></a>
@@ -60,10 +60,10 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Trennlinie für mobile Ansicht */}
+       
           <div className="md:hidden border-b-2" />
 
-          {/* Bereich für Newsletter-Anmeldung */}
+      
           <motion.div
             variants={
               isMediumScreen ? fadeIn("left", 0.8) : fadeIn("right", 0.8)
@@ -73,14 +73,15 @@ const Footer = () => {
             viewport={{ margin: "100px" }}
           >
             <div>
-              <p className="text-2xl">Newletters</p> {/* Titel */}
+              <p className="text-2xl">Newsletters</p>
               <div className="py-4">
                 <p className=" text-PRIMARY_GRAY">
                   Subscribe Our Newsletter To Get More
                 </p>
                 <p className=" text-PRIMARY_GRAY">Free Infos and Resource </p>
               </div>
-              {/* Eingabefeld für E-Mail-Adresse und Anmeldebutton */}
+             
+
               <div className="flex justify-between gap-1 rounded-full w-full py-3 px-4 bg-PRIMARY_BLACK/100 ">
                 <input
                   placeholder="Enter Your Email"

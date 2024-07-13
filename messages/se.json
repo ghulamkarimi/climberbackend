@@ -1,0 +1,26 @@
+{
+    "header":{
+        "topHeader":"Få tidig tillgång till lanseringar och erbjudanden.",
+        "toggleMenu":{
+            "baby":" Baby 56-104"
+        },
+        "announcement":{
+            "announcementOne"  :"Leveranser",
+            "announcementTwo"  :"Vi levererar till Sverige och Tyskland",
+            "announcementThree"  :"Fri fraktgräns",
+            "announcementFour"  :"Fri frakt vid köp över 700 kr. Läs mer.."
+        }
+    },
+    "footer":{
+        "rightFooterOne":"  CLIMBER Mode .",
+        "rightFooterTwo":"  Sverige .",
+        "rightFooterThree":"  Låt oss prata! ",
+        "leftFooterOne":"  Nyhetsbrev ",
+        "leftFooterTwo":"   Prenumerera på vårt nyhetsbrev för att få mer ",
+        "leftFooterThree":"  Gratis information och resurser  ",
+        "leftFooterFour":"  ©2024 Climber Mode. Alla rättigheter reserverade. Användarvillkor Sekretessvillkor ",
+        "leftFooterFive":"drivs av Orosia Team",
+        "footerButton":"  Submit "
+
+    }
+}
