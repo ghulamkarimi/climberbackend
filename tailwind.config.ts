@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -9,14 +10,17 @@ const config: Config = {
   theme: {
     
     fontFamily: {
-      FONT_VIGA: ["Viga", "sans-serif"],
-      FONT_ROBOTO: ["Roboto", "sans-serif"],
-      FONT_SALSA: ["Salsa", "cursive"],
+      VIGA: ["Viga", "sans-serif"],
+      ROBOTO: ["Roboto", "sans-serif"],
+      SALSA: ["Salsa", "cursive"],
       ANTON: ["Anton", "sans-serif"],
+      DANCING :["Dancing Script", "cursive"]
     },
     extend: {
       colors: {
-        BACKGROUND:"#10111a"
+        BACKGROUND:"#10111a",
+        PRIMARY_BLUE:"#0284c7",
+        PRIMARY_BLACK:"#3b3939",
       },
     },
   },
