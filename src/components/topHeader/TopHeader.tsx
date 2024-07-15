@@ -2,36 +2,39 @@
 
 import { SE, GB } from "country-flag-icons/react/1x1";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { CiFacebook } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
+interface Language {
+  flag: JSX.Element;
+  code: string;
+  name: string;
+}
+
 const TopHeader = () => {
+  const pathName = usePathname();
   const router = useRouter();
   const t = useTranslations("header");
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState({
-    flag: <GB className="w-4 rounded-full" />,
-    code: "en",
-    name: "English",
-  });
-
+  
   const languageList = [
     { flag: <SE className="w-4 rounded-full" />, code: "se", name: "Sweden" },
     { flag: <GB className="w-4 rounded-full" />, code: "en", name: "England" },
   ];
 
+  const getCurrentLanguage = (): Language => {
+    const locale = pathName?.split("/")[1] || "en";
+    return languageList.find((lang) => lang.code === locale) || languageList[1];
+  };
+
+  const [selected, setSelected] = useState<Language>(getCurrentLanguage());
+
   const dropdownRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
-
-  const handleLanguageChange = (language: any) => {
-    setSelected(language);
-    setOpen(false);
-    router.push(`/${language.code}`);
-  };
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -52,8 +55,21 @@ const TopHeader = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Selected language changed:", selected);
-  }, [selected]);
+    setSelected(getCurrentLanguage());
+  }, [pathName]);
+
+  const redirectedPathName = (locale: string) => {
+    if (!pathName) return "/";
+    const segments = pathName.split("/");
+    segments[1] = locale;
+    return segments.join("/");
+  };
+
+  const handleLanguageChange = (language: Language) => {
+    setSelected(language);
+    setOpen(false);
+    router.push(redirectedPathName(language.code));
+  };
 
   return (
     <div className="flex justify-between items-center p-2 text-white bg-BACKGROUND">
