@@ -84,13 +84,13 @@ const Footer = () => {
                 <p className=" text-PRIMARY_GRAY">{t('leftFooterThree')} </p>
               </div>
            
-              <div className="flex justify-between gap-1 rounded-full w-full py-3 px-4 bg-PRIMARY_BLACK/100 ">
+              <div className="flex justify-between gap-1 rounded-full w-full py-3 px-4 bg-PRIMARY ">
                 <input
                   placeholder="Enter Your Email"
-                  className="rounded-full outline-none w-full md:w-[300px] placeholder:px-1 placeholder:font-SALSA"
+                  className="rounded-full outline-none w-full md:w-[300px] placeholder:px-1 placeholder:font-SALSA bg-transparent text-gra00 "
                   type="email"
                 />
-                <button className="bg-PRIMARY_BLUE py-1  px-3 rounded-full">
+                <button className="bg-PRIMARY_BLUE py-1  px-3 rounded-full bg-sky-400 font-bold font-FONT_VIGA text-black">
                 {t('footerButton')}
                 </button>
               </div>
