@@ -16,22 +16,12 @@ const page = () => {
 
   return (
     <MaxWithWrapper>
-      <div>
-        <TopHeader />
-      </div>
-      <div>
-        <Menu />
-      </div>
-      <div className="" >
-        <AnnouncementText />
-      </div>
+   
       <div>
         <Slider items={carouselItems} />
       </div>
       <main></main>
-      <footer className="mt-10">
-        <Footer />
-      </footer>
+   
     </MaxWithWrapper>
   );
 };

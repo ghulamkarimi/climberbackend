@@ -1,11 +1,14 @@
-
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
-import ReduxProvider from "@/feature/ReduxProvider";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import TopHeader from "@/src/components/topHeader/TopHeader";
+import Menu from "@/src/components/menu/Menu";
+import AnnouncementText from "@/src/components/announcementText/announcementText";
+import Footer from "@/src/components/Footer";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,26 +23,36 @@ interface IRootLayoutProps {
     locale: string;
   };
   messages: any;
+  className?:string
 }
 
 export default async function LocaleLayout({
   children,
-  params: {locale}
+  params: { locale },
+  className
 }: IRootLayoutProps) {
- 
   const messages = await getMessages();
- 
+
   return (
-    <html lang={locale}>
-      <body>
-      <ReduxProvider>
+    <div className={`mx-auto w-full max-w-screen-3xl px-2.5 md:px-5 lg:px-24 ${className}`} lang={locale}>
+     
         <NextIntlClientProvider messages={messages}>
-          <div>
+        <div>
+        <TopHeader />
+      </div>
+
+      <div>
+        <Menu />
+      </div>
+      <div className="" >
+        <AnnouncementText />
+      </div>
           {children}
-          </div>
+          <footer className="mt-10">
+        <Footer />
+      </footer>
         </NextIntlClientProvider>
-        </ReduxProvider>
-      </body>
-    </html>
+     
+    </div>
   );
 }

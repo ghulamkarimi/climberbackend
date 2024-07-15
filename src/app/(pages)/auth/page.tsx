@@ -16,10 +16,9 @@ const AuthPage = () => {
         className="hidden lg:flex lg:col-span-6 relative"
         style={{ width: "100%", height: "100vh" }}
       >
-        <Image
+        <img
           src="/registerBildOne.jpg"
-          layout="fill"
-          objectFit="cover"
+          className="object-cover w-full h-full"
           alt="register Photo"
         />
       </div>

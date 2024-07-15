@@ -26,11 +26,10 @@ const Menu = () => {
           />
         </div>
         <div>
-          <Image
+          <img
             alt="ClimberLogo"
-            src="/logo/ClimberLogo.png"
-            width={50}
-            height={50}
+            src="/logo/logo.png"
+            className=" w-20 h-20"
           />
         </div>
         <div className=" flex items-center justify-center gap-3 text-2xl">

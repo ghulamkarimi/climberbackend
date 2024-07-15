@@ -27,6 +27,12 @@ const TopHeader = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
 
+  const handleLanguageChange = (language: any) => {
+    setSelected(language);
+    setOpen(false);
+    router.push(`/${language.code}`);
+  };
+
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (
@@ -38,18 +44,16 @@ const TopHeader = () => {
         setOpen(false);
       }
     };
-    document.addEventListener("click", handleOutsideClick);
 
+    document.addEventListener("click", handleOutsideClick);
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, []);
 
-  const handleLanguageChange = (language:any) => {
-    setSelected(language);
-    setOpen(false);
-    router.push(`/${language.code}`);
-  };
+  useEffect(() => {
+    console.log("Selected language changed:", selected);
+  }, [selected]);
 
   return (
     <div className="flex justify-between items-center p-2 text-white bg-BACKGROUND">
@@ -65,7 +69,7 @@ const TopHeader = () => {
         <div className="relative w-32">
           <button
             ref={btnRef}
-            onClick={() => setOpen(!open)}
+            onClick={() => setOpen((prev) => !prev)} // Toggle Dropdown
             className={`flex items-center justify-center gap-3 focus:outline-none relative py-1 px-4 cursor-pointer text-black bg-white rounded-md border border-blueGray-200 text-xs ${
               open ? "rounded-b-none" : ""
             }`}
@@ -78,7 +82,7 @@ const TopHeader = () => {
           {open && (
             <div
               ref={dropdownRef}
-              className="-mt-px border border-blueGray-200 z-20 w-full bg-PRIMARY_WHITE absolute max-h-300-px overflow-x-auto rounded-b-md shadow-lg scrollable-div"
+              className="-mt-px border border-blueGray-200 z-20 w-full bg-PRIMARY_WHITE absolute max-h-300-px overflow-x-auto rounded-b-md shadow-lg"
             >
               {languageList.map((language, index) => (
                 <button
