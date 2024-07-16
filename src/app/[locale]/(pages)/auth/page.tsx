@@ -3,8 +3,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/feature/store/store";
 import Image from "next/image";
-import Register from "@/src/components/auth/Register";
-import Login from "@/src/components/auth/Login";
+import Register from "@/src/app/[locale]/components/auth/Register";
+import Login from "@/src/app/[locale]/components/auth/Login";
 
 const AuthPage = () => {
   const { isLogin } = useSelector((state: RootState) => state.app);
