@@ -1,9 +1,9 @@
-import Footer from "@/src/components/Footer";
-import MaxWithWrapper from "@/src/components/MaxWithWrapper";
-import AnnouncementText from "@/src/components/announcementText/announcementText";
-import Slider from "@/src/components/carousel/Carousel";
-import Menu from "@/src/components/menu/Menu";
-import TopHeader from "@/src/components/topHeader/TopHeader";
+import Footer from "@/src/app/[locale]/components/Footer";
+import MaxWithWrapper from "@/src/app/[locale]/components/MaxWithWrapper";
+import AnnouncementText from "@/src/app/[locale]/components/announcementText/announcementText";
+import Slider from "@/src/app/[locale]/components/carousel/Carousel";
+import Menu from "@/src/app/[locale]/components/menu/Menu";
+import TopHeader from "@/src/app/[locale]/components/topHeader/TopHeader";
 
 const page = () => {
   const carouselItems = [
@@ -16,12 +16,10 @@ const page = () => {
 
   return (
     <MaxWithWrapper>
-   
       <div>
         <Slider items={carouselItems} />
       </div>
       <main></main>
-   
     </MaxWithWrapper>
   );
 };

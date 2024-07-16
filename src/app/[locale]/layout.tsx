@@ -4,11 +4,10 @@ import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import TopHeader from "@/src/components/topHeader/TopHeader";
-import Menu from "@/src/components/menu/Menu";
-import AnnouncementText from "@/src/components/announcementText/announcementText";
-import Footer from "@/src/components/Footer";
-
+import TopHeader from "@/src/app/[locale]/components/topHeader/TopHeader";
+import Menu from "@/src/app/[locale]/components/menu/Menu";
+import AnnouncementText from "@/src/app/[locale]/components/announcementText/announcementText";
+import Footer from "@/src/app/[locale]/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,36 +22,37 @@ interface IRootLayoutProps {
     locale: string;
   };
   messages: any;
-  className?:string
+  className?: string;
 }
 
 export default async function LocaleLayout({
   children,
   params: { locale },
-  className
+  className,
 }: IRootLayoutProps) {
   const messages = await getMessages();
 
   return (
-    <div className={`mx-auto w-full max-w-screen-3xl px-2.5 md:px-5 lg:px-24 ${className}`} lang={locale}>
-     
-        <NextIntlClientProvider messages={messages}>
+    <div
+      className={`mx-auto w-full max-w-screen-3xl px-2.5 md:px-5 lg:px-24 ${className}`}
+      lang={locale}
+    >
+      <NextIntlClientProvider messages={messages}>
         <div>
-        <TopHeader />
-      </div>
+          <TopHeader />
+        </div>
 
-      <div>
-        <Menu />
-      </div>
-      <div className="" >
-        <AnnouncementText />
-      </div>
-          {children}
-          <footer className="mt-10">
-        <Footer />
-      </footer>
-        </NextIntlClientProvider>
-     
+        <div>
+          <Menu />
+        </div>
+        <div className="">
+          <AnnouncementText />
+        </div>
+        {children}
+        <footer className="mt-10">
+          <Footer />
+        </footer>
+      </NextIntlClientProvider>
     </div>
   );
 }
