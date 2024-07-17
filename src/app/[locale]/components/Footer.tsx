@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import MaxWithWrapper from "./MaxWithWrapper";
 import {
   FaFacebookF,
   FaInstagram,
@@ -19,7 +18,7 @@ const Footer = () => {
   const isMediumScreen = useMediaQuery("(max-width: 640px)");
   const {isMenuActive}=useSelector((state: RootState) => state.app);
   return (
-    <div className={` ${isMenuActive? "":"bg-BACKGROUND text-white pt-9 pb-2"}`}>
+    <div className="bg-BACKGROUND text-white pt-9 pb-2">
       <div className="pt-4 px-10">
         <div className="flex flex-col gap-4 md:flex md:flex-row justify-between ">
           <motion.div
