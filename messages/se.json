@@ -2,7 +2,28 @@
     "header":{
         "topHeader":"Få tidig tillgång till lanseringar och erbjudanden.",
         "toggleMenu":{
-            "baby":" Baby 56-104"
+            "Mens":" Herr 40-52",
+            "women":" Kvinnor 30-52",
+            "mensCategories":{
+                "categories":"Kategorier",
+                "Suit":"Herrkostym",
+                "Shirt":"Skjorta",
+                "Underdress":"Underklänning",
+                "pants":"byxor",
+                "socks":"strumpor",
+                "Shoes":"Skor",
+                "Ties":" Slipsar"
+            },
+            "womenCategories":{
+                "categories":"Kategorier",
+                "Suit":"Herrkostym",
+                "Shirt":"Skjorta",
+                "Underdress":"Underklänning",
+                "pants":"byxor",
+                "socks":"strumpor",
+                "Shoes":"Skor",
+                "Ties":"Slipsar "
+            }
         },
         "announcement":{
             "announcementOne"  :"Leveranser",
