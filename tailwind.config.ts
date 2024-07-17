@@ -13,6 +13,7 @@ const config: Config = {
       FONT_ROBOTO: ["Roboto", "sans-serif"],
       FONT_SALSA: ["Salsa", "cursive"],
       ANTON: ["Anton", "sans-serif"],
+      FONT_INTO: ["Shadows Into Light", "cursive"]
     },
     extend: {
       colors: {

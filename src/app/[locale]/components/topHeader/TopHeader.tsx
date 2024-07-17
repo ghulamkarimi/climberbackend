@@ -1,5 +1,6 @@
 "use client";
 
+import { RootState } from "@/feature/store/store";
 import { SE, GB } from "country-flag-icons/react/1x1";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
@@ -8,6 +9,7 @@ import { CiFacebook } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { useSelector } from "react-redux";
 
 interface Language {
   flag: JSX.Element;
@@ -70,15 +72,16 @@ const TopHeader = () => {
     setOpen(false);
     router.push(redirectedPathName(language.code));
   };
+  const {isMenuActive}=useSelector((state:RootState)=>state.app)
 
   return (
-    <div className="flex justify-between items-center p-2 text-white bg-BACKGROUND">
+    <div className={`flex justify-between items-center p-2 text-white bg-BACKGROUND  ${isMenuActive ? "opacity-50":""} `}>
       <div className="flex gap-2.5 text-l">
         <FaInstagram />
         <CiFacebook />
         <FaXTwitter />
       </div>
-      <div className="text-xs font-bold">
+      <div className="hidden sm:flex text-xs font-bold">
         <p>{t("topHeader")}</p>
       </div>
       <div>
@@ -98,14 +101,14 @@ const TopHeader = () => {
           {open && (
             <div
               ref={dropdownRef}
-              className="-mt-px border border-blueGray-200 z-20 w-full bg-PRIMARY_WHITE absolute max-h-300-px overflow-x-auto rounded-b-md shadow-lg"
+              className="-mt-px border border-blueGray-200 z-50 w-full bg-PRIMARY_WHITE absolute max-h-300-px overflow-x-auto rounded-b-md shadow-lg"
             >
               {languageList.map((language, index) => (
                 <button
                   key={index}
-                  className={`flex items-center justify-center gap-3 focus:outline-none w-full text-gray-600 cursor-pointer py-1 px-4 hover:font-semibold hover:text-gray-900 hover:bg-gray-100 ${
+                  className={`flex items-center justify-center gap-3 focus:outline-none w-full text-gray-600 cursor-pointer py-1 px-4 hover:font-semibold hover:text-gray-900 bg-gray-100 ${
                     selected.code === language.code
-                      ? "font-semibold text-gray-900 bg-gray-100"
+                      ? "font-semibold text-gray-900 bg-green-400"
                       : ""
                   }`}
                   onClick={() => handleLanguageChange(language)}

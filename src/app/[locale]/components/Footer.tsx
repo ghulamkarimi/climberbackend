@@ -19,8 +19,8 @@ const Footer = () => {
   const isMediumScreen = useMediaQuery("(max-width: 640px)");
   const {isMenuActive}=useSelector((state: RootState) => state.app);
   return (
-    <div className={` ${isMenuActive? "hidden":"bg-BACKGROUND text-white pt-9 pb-2"}`}>
-      <MaxWithWrapper className="pt-4">
+    <div className={` ${isMenuActive? "":"bg-BACKGROUND text-white pt-9 pb-2"}`}>
+      <div className="pt-4 px-10">
         <div className="flex flex-col gap-4 md:flex md:flex-row justify-between ">
           <motion.div
             className="pb-9"
@@ -120,7 +120,7 @@ const Footer = () => {
           <p className="w-full text-center pt-2">{t("leftFooterFour")}</p>
           <p> {t("leftFooterFive")}</p>
         </div>
-      </MaxWithWrapper>
+      </div>
     </div>
   );
 };
