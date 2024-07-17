@@ -9,7 +9,7 @@ const AnnouncementText = () => {
         {
             index: "1",
             component: (
-                <div key="1" className="flex flex-col items-center justify-center text-sm font-bold">
+                <div key="1" className="flex flex-col items-center justify-center text-xs sm:text-sm  font-bold">
                     <p>{t('announcement.announcementOne')}</p>
                     <p className="underline">{t('announcement.announcementTwo')}</p>
                 </div>
@@ -18,7 +18,7 @@ const AnnouncementText = () => {
         {
             index: "2",
             component: (
-                <div key="2" className="flex flex-col items-center justify-center text-sm font-bold">
+                <div key="2" className="flex flex-col items-center justify-center text-xs sm:text-sm font-bold">
                     <p>{t('announcement.announcementThree')}</p>
                     <p className="underline">{t('announcement.announcementFour')}</p>
                 </div>

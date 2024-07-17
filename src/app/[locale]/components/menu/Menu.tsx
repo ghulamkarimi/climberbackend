@@ -1,6 +1,4 @@
 "use client";
-
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CiMenuBurger, CiSearch } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
@@ -14,38 +12,41 @@ const Menu = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { isMenuActive } = useSelector((state: RootState) => state.app);
+
   return (
-    <div className=" ">
-      <div className=" flex items-center justify-between p-2">
-        <div className=" text-2xl">
+    <div >
+      <div className={`flex items-center justify-between p-2 ${isMenuActive && "opacity-50"}`}>
+        <div className="text-2xl">
           <CiMenuBurger
             onClick={() => {
               dispatch(setIsMenuActive(!isMenuActive));
             }}
-            className={` cursor-pointer`}
+            className="cursor-pointer"
           />
         </div>
         <div>
           <img
             alt="ClimberLogo"
             src="/logo/logo.png"
-            className=" w-20 h-20"
+            className="w-10 h-10 sm:w-20 sm:h-20"
           />
         </div>
-        <div className=" flex items-center justify-center gap-3 text-2xl">
-          <CiSearch className=" cursor-pointer" />
+        <div className="flex items-center justify-center gap-3 text-2xl">
+          <CiSearch className="cursor-pointer" />
           <MdOutlineManageAccounts
-            className=" cursor-pointer"
+            className="cursor-pointer"
             onClick={() => {
               router.push("/auth");
             }}
           />
-          <IoBagOutline className=" cursor-pointer" />
+          <IoBagOutline className="cursor-pointer" />
         </div>
       </div>
-      <div className={` w-4/5 absolute z-50 top-0 left-0 transition-all duration-500 ${isMenuActive === false ? "hidden " : "flex min-h-screen h-full"}`}>
-        <ToggleMenu />
-      </div>
+      {isMenuActive && (
+        <div className="absolute z-50 top-0 left-0 w-full h-full">
+          <ToggleMenu />
+        </div>
+      )}
     </div>
   );
 };

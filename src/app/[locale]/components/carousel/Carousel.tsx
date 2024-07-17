@@ -50,7 +50,7 @@ const Slider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numberIt
          {items &&
           items.map((img, index) => (
             <div key={index}>
-              <img className='w-full h-full' src={img.image} alt={`Carousel item ${index}`} />
+              <img className='w-full h-[70vh]' src={img.image} alt={`Carousel item ${index}`} />
             </div>
           ))}
       </Carousel>
