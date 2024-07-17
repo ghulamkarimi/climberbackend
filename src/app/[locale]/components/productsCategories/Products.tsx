@@ -4,6 +4,7 @@ import { useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { IProductsItems } from "../../(pages)/men/page";
+import ReactStars from "react-stars";
 
 export interface CarouselProps {
   items: IProductsItems[];
@@ -58,10 +59,15 @@ const Products = ({
                   alt={products.title}
                 />
               </div>
-              <div className="flex justify-between p-2 items-center gap-3">
+              <div className="flex flex-col p-2 items-center gap-1">
                 <p className="text-lg">{products.title}</p>
-                <p className="text-xs">{products.bewertung}</p>
-              </div>
+                <ReactStars
+                count={5}
+                size={24}
+                value={products.bewertung}
+                color2={"#ffd700"}
+                edit={false}
+              />              </div>
             </div>
           ))}
       </Carousel>

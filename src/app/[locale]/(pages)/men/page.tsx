@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 import Products from "../../components/productsCategories/Products";
 
 export interface IProductsItems {
@@ -9,7 +8,7 @@ export interface IProductsItems {
   title: string;
   price: string;
   size: string;
-  bewertung: string;
+  bewertung: number; // Changed to number
   bild: string;
 }
 
@@ -22,7 +21,7 @@ const categories = () => {
       title: "Anzug blau und cravat",
       price: "360 eu",
       size: "48",
-      bewertung: "4,1",
+      bewertung: 4.1,
       bild: "/anzug/bildOne.jpg",
     },
     {
@@ -32,7 +31,7 @@ const categories = () => {
       title: "anzug",
       price: "360 eu",
       size: "42",
-      bewertung: "4,9",
+      bewertung: 4.9,
       bild: "/anzug/bildTwo.jpg",
     },
     {
@@ -42,7 +41,7 @@ const categories = () => {
       title: "Anzug",
       price: "360 eu",
       size: "52",
-      bewertung: "4,1",
+      bewertung: 4.1,
       bild: "/anzug/bildThree.jpg",
     },
     {
@@ -52,7 +51,7 @@ const categories = () => {
       title: "Anzug",
       price: "360 eu",
       size: "52",
-      bewertung: "4,8",
+      bewertung: 4.8,
       bild: "/anzug/bildFour.jpg",
     },
   ];
@@ -63,9 +62,9 @@ const categories = () => {
         Our Collections
       </h1>
       <h2 className="mt-4 font-FONT_ROBOTO font-bold text-3xl">Categories</h2>
-     <div className=" w-full">
-     <Products items={products} />
-     </div>
+      <div className="w-full">
+        <Products items={products} />
+      </div>
     </div>
   );
 };
