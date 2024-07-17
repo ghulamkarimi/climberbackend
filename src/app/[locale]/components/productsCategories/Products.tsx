@@ -1,76 +1,91 @@
-interface IProducts {
-  id: string;
-  art: string;
-  categories: string;
-  title: string;
-  price: string;
-  size: string;
-  bewertung: string;
-  bild: string;
+"use client";
+
+import { useState } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { IProductsItems } from "../../(pages)/men/page";
+
+export interface CarouselProps {
+  items: IProductsItems[];
+  numberItemsDesktop?: number;
+  numberItemsTablet?: number;
+  numberItemsMobile?: number;
 }
 
-const products: IProducts[] = [
-  {
-    id: "1",
-    art: "herren",
-    categories: "anzug",
-    title: "Anzug blau und cravat",
-    price: "360 eu",
-    size: "48",
-    bewertung: "4,1",
-    bild: "https://th.bing.com/th?id=OIP.bw_TDKr4o3-tRkN2AiX--AHaKT&w=211&h=294&c=8&rs=1&qlt=90&o=6&dpr=1.4&pid=3.1&rm=2",
-  },
-  {
-    id: "2",
-    art: "herren",
-    categories: "T-shirts",
-    title: "anzug",
-    price: "360 eu",
-    size: "42",
-    bewertung: "4,9",
-    bild: "https://th.bing.com/th/id/OIP.Pep5HLS3f1jlTXIXwT9V2wHaIm?w=189&h=220&c=7&r=0&o=5&dpr=1.4&pid=1.7",
-  },
-  {
-    id: "3",
-    art: "herren",
-    categories: "anzug",
-    title: "Anzug",
-    price: "360 eu",
-    size: "52",
-    bewertung: "4,1",
-    bild: "https://th.bing.com/th?id=OIP.mR90_O8Pg8XuAmZYL7zr6AHaJx&w=217&h=287&c=8&rs=1&qlt=90&o=6&dpr=1.4&pid=3.1&rm=2",
-  },
-  {
-    id: "4",
-    art: "herren",
-    categories: "",
-    title: "Anzug",
-    price: "360 eu",
-    size: "52",
-    bewertung: "4,8",
-    bild: "https://th.bing.com/th?id=OIP.-2s5casUHJsTvKnj_M9BTQAAAA&w=241&h=241&c=8&rs=1&qlt=90&o=6&dpr=1.4&pid=3.1&rm=2",
-  },
-];
+const Products = ({
+  items,
+  numberItemsDesktop = 4,
+  numberItemsTablet = 2,
+  numberItemsMobile = 1,
+}: CarouselProps) => {
+  const [_, setActiveIndex] = useState(0);
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: numberItemsDesktop,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: numberItemsTablet,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: numberItemsMobile,
+    },
+  };
 
-const Products = () => {
   return (
-    <div className="bg-stone-300 py-6 px-4 mt-4 ">
-      <div className="flex justify-between items-center w-full ">
-        {products.map((product: IProducts) => (
-          <div key={product.id}>
-            <div className="overflow-hidden rounded-lg">
-            <img src={product.bild} className="h-72 w-60 hover:scale-105 duration-300 hover:brightness-50 rounded-lg"></img>
+    <div className="w-full">
+      <Carousel
+        responsive={responsive}
+        renderButtonGroupOutside
+        className="relative z-10 mt-6"
+        arrows={false}
+        draggable={true}
+        showDots
+        additionalTransfrom={0}
+        beforeChange={(nextSlide) => setActiveIndex(nextSlide)}
+        infinite={true}
+        autoPlay
+      >
+        {items &&
+          items.map((products) => (
+            <div key={products.id} className=" w-full flex flex-col items-center p-2 cursor-pointer ">
+              <div className="overflow-hidden rounded-lg w-full p-2">
+                <img
+                  src={products.bild}
+                  className=" h-80 w-80 hover:scale-105 duration-300 hover:brightness-50 rounded-lg"
+                  alt={products.title}
+                />
+              </div>
+              <div className="flex justify-between p-2 items-center gap-3">
+                <p className="text-lg">{products.title}</p>
+                <p className="text-xs">{products.bewertung}</p>
+              </div>
             </div>
-          <div className=" flex justify-between px-2 items-center gap-3">
-          <p className="text-lg">{product.title}</p>
-          <p className="text-xs">{product.bewertung}</p>
-          </div>
-
-          </div>
-        ))}
-      </div>
+          ))}
+      </Carousel>
     </div>
   );
 };
 
 export default Products;
+
+/*  <div className=" flex items-center justify-around w-full gap-2">
+          {items &&
+            items.map((product) => (
+             <div className=" w-full flex ">
+               <div className="overflow-hidden rounded-lg w-full">
+              <img
+                src={product.bild}
+                className="h-72 w-72 hover:scale-105 duration-300 hover:brightness-50 rounded-lg"
+                alt={product.title}
+              />
+            </div>
+            <div className="flex justify-between px-2 items-center gap-3">
+              <p className="text-lg">{product.title}</p>
+              <p className="text-xs">{product.bewertung}</p>
+            </div>
+             </div>
+            ))}
+        </div> */

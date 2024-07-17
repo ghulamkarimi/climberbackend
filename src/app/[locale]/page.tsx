@@ -1,6 +1,5 @@
 "use client";
-import { RootState } from "@/feature/store/store";
-import MaxWithWrapper from "@/src/app/[locale]/components/MaxWithWrapper";
+
 import Slider from "@/src/app/[locale]/components/carousel/Carousel";
 
 

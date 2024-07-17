@@ -3,13 +3,12 @@
 import { useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import Image from 'next/image';
 interface ICarouselItem {
   index: string;
   image: string;
 }
 
-interface CarouselProps {
+export interface CarouselProps {
   items: ICarouselItem[];
   numberItemsDesktop?: number;
   numberItemsTablet?: number;
