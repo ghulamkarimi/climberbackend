@@ -13,16 +13,9 @@ const MensToggleMenu = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className=" w-full">
-      <div className="my-6 mx-4 w-full">
-        <div className="flex justify-end text-2xl mb-3">
-          <IoMdClose
-            onClick={() => {
-              dispatch(setIsMenuActive(false));
-            }}
-            className="cursor-pointer text-black"
-          />
-        </div>
+    <div className="">
+      <div className="my-6 w-full">
+       
         <div className="border-b-2 border-t-2 border-black">
           <div className="p-2 flex items-center justify-between">
             <p className="text-sm uppercase font-bold ">
@@ -59,25 +52,25 @@ const MensToggleMenu = () => {
               }`}
             >
               <div className="flex flex-col items-center justify-center gap-2 mt-3 py-2 text-xs sm:text-sm">
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className="categories">
                   {t("toggleMenu.mensCategories.Suit")}
                 </div>
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className="categories">
                   {t("toggleMenu.mensCategories.Shirt")}
                 </div>
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className="categories">
                   {t("toggleMenu.mensCategories.Underdress")}
                 </div>
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className=" categories">
                   {t("toggleMenu.mensCategories.pants")}
                 </div>
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className="categories">
                   {t("toggleMenu.mensCategories.socks")}
                 </div>
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className="categories">
                   {t("toggleMenu.mensCategories.Shoes")}
                 </div>
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className="categories">
                   {t("toggleMenu.mensCategories.Ties")}
                 </div>
               </div>

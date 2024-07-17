@@ -43,7 +43,7 @@ const Menu = () => {
           <IoBagOutline className=" cursor-pointer" />
         </div>
       </div>
-      <div className={` w-4/5 absolute z-50 top-0 left-0 transition-all duration-500 ${isMenuActive === false ? "hidden " : "flex min-h-screen"}`}>
+      <div className={` w-4/5 absolute z-50 top-0 left-0 transition-all duration-500 ${isMenuActive === false ? "hidden " : "flex min-h-screen h-full"}`}>
         <ToggleMenu />
       </div>
     </div>

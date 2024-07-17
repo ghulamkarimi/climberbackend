@@ -6,4 +6,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+.categories {
+    @apply cursor-pointer uppercase hover:underline border-black
+}
+
  

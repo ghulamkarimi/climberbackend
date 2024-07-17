@@ -1,8 +1,7 @@
 "use client";
 
-import { IoMdClose, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useTranslations } from "next-intl";
-import { useDispatch } from "react-redux";
 import { useState } from "react";
 
 const WomenToggleMenu = () => {
@@ -12,8 +11,8 @@ const WomenToggleMenu = () => {
   
 
   return (
-    <div className=" w-full">
-      <div className="mx-4 w-full">
+    <div className="">
+      <div className=" w-full">
         <div className="border-b-2 border-t-2 border-black">
           <div className="p-2 flex items-center justify-between">
             <p className="text-sm uppercase font-bold ">
@@ -50,25 +49,25 @@ const WomenToggleMenu = () => {
               }`}
             >
               <div className="flex flex-col items-center justify-center gap-2 mt-3 py-2 text-xs sm:text-sm">
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className="categories">
                   {t("toggleMenu.womenCategories.Suit")}
                 </div>
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className="categories">
                   {t("toggleMenu.womenCategories.Shirt")}
                 </div>
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className="categories">
                   {t("toggleMenu.womenCategories.Underdress")}
                 </div>
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className="categories">
                   {t("toggleMenu.womenCategories.pants")}
                 </div>
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className="categories">
                   {t("toggleMenu.womenCategories.socks")}
                 </div>
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className="categories">
                   {t("toggleMenu.womenCategories.Shoes")}
                 </div>
-                <div className="cursor-pointer uppercase hover:border-b-2 border-black">
+                <div className="categories">
                   {t("toggleMenu.womenCategories.Ties")}
                 </div>
               </div>
