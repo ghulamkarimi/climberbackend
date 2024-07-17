@@ -2,7 +2,28 @@
     "header":{
         "topHeader":"Få tidig tillgång till lanseringar och erbjudanden.",
         "toggleMenu":{
-            "Mens":" Herr 42-54"
+            "Mens":" Herr 40-52",
+            "women":" Kvinnor 30-52",
+            "mensCategories":{
+                "categories":"Kategorier",
+                "Suit":"Herrkostym",
+                "Shirt":"Skjorta",
+                "Underdress":"Underklänning",
+                "pants":"byxor",
+                "socks":"strumpor",
+                "Shoes":"Skor",
+                "Ties":" Slipsar"
+            },
+            "womenCategories":{
+                "categories":"Kategorier",
+                "Suit":"Herrkostym",
+                "Shirt":"Skjorta",
+                "Underdress":"Underklänning",
+                "pants":"byxor",
+                "socks":"strumpor",
+                "Shoes":"Skor",
+                "Ties":"Slipsar "
+            }
         },
         "announcement":{
             "announcementOne"  :"Leveranser",
@@ -13,7 +34,7 @@
     },
     "footer":{
         "rightFooterOne":"  CLIMBER Mode ",
-        "rightFooterTwo":"  Sverige 1999",
+        "rightFooterTwo":"  Sverige ",
         "rightFooterThree":"  Låt oss prata! ",
         "leftFooterOne":"  Nyhetsbrev ",
         "leftFooterTwo":"   Prenumerera på vårt nyhetsbrev för att få mer ",

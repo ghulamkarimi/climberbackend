@@ -2,7 +2,28 @@
     "header":{
         "topHeader":"Get early access on launches und offers.",
         "toggleMenu":{
-            "Mens":" Mens 42-54"
+            "Mens":" Mens 40-52",
+            "women":" Women 40-52",
+            "mensCategories":{
+                "categories":"Categories",
+                "Suit":"Suit",
+                "Shirt":"Shirt",
+                "Underdress":"Underdress",
+                "pants":"pants",
+                "socks":"socks",
+                "Shoes":"Shoes",
+                "Ties":"Ties "
+            },
+            "womenCategories":{
+                "categories":"Categories",
+                "Suit":"Suit",
+                "Shirt":"Shirt",
+                "Underdress":"Underdress",
+                "pants":"pants",
+                "socks":"socks",
+                "Shoes":"Shoes",
+                "Ties":"Ties "
+            }
         },
         "announcement":{
             "announcementOne"  :"Deliveries",
@@ -14,7 +35,7 @@
     },
     "footer":{
         "rightFooterOne":"  CLIMBER FASHION ",
-        "rightFooterTwo":"  Sweden 1999 ",
+        "rightFooterTwo":"  Sweden ",
         "rightFooterThree":"  Let's talk! ",
         "leftFooterOne":"  Newsletters ",
         "leftFooterTwo":"   Subscribe Our Newsletter To Get More ",
