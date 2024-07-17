@@ -35,7 +35,7 @@ const Products = ({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full p-2">
       <Carousel
         responsive={responsive}
         renderButtonGroupOutside
