@@ -12,7 +12,7 @@ const ToggleMenu = () => {
   const dispatch = useDispatch()
   
   return (
-    <div className={`w-2/4 px-3 py-4 min-h-screen h-full bg-slate-200 ${isMenuActive ? "":""}  `}>
+    <div className={`w-2/4 px-3 py-4 min-h-screen h-full bg-white ${isMenuActive ? "":""}  `}>
       <div>
       <div className="flex justify-end text-2xl mb-3">
           <IoMdClose

@@ -5,15 +5,20 @@ import FilterToggleMenu from "../../../components/filterMenu/FilterToggleMenu";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/feature/store/store";
 import { setIsFilterToggleMenuActive } from "@/feature/reducers/appSlice";
+import { useState } from "react";
+import FeaturedMenu from "../../../components/featuredMenu/FeaturedMenu";
 
 const Page = () => {
   const dispatch = useDispatch();
   const { isFilterToggleMenuActive } = useSelector(
     (state: RootState) => state.app
   );
+  const [isFeaturedActive, setIsFeaturedActive] = useState(false);
 
   return (
-    <div>
+    <div
+    onClick={()=>{}}
+    >
       <div className="">
         <div className="md:grid md:grid-cols-12 p-2">
           <div className="hidden md:col-span-3"></div>
@@ -42,13 +47,10 @@ const Page = () => {
             </button>
             <button className="flex items-center gap-2 w-1/2 px-3 py-1 bg-slate-300 justify-between rounded-lg">
               <div className="flex items-center gap-2">
-                <p>
-                  <IoFilterSharp />
-                </p>
-                <p>Filter</p>
+                <p>Featured</p>
               </div>
-              <div>
-                <IoIosArrowDown />
+              <div className="" onClick={()=>{setIsFeaturedActive(!isFeaturedActive)}}>
+                {isFeaturedActive ? <IoIosArrowDown />:<IoIosArrowUp />}
               </div>
             </button>
           </div>
@@ -56,8 +58,14 @@ const Page = () => {
         </div>
       </div>
       {isFilterToggleMenuActive && (
-        <div className={`md:hidden  opacity-100 p-4 `} >
+        <div className={`md:hidden  opacity-100 p-4 `}>
           <FilterToggleMenu />
+        </div>
+      )}
+
+      {isFeaturedActive && (
+        <div className={`md:hidden absolute right-0 mx-8 w-[230px]`}>
+          <FeaturedMenu />
         </div>
       )}
     </div>
