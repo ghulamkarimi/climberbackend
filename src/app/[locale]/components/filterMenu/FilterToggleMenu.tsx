@@ -1,6 +1,6 @@
 "use client";
 
-import { setIsFilterToggleMenuActive } from "@/feature/reducers/appSlice";
+import { setIsFeaturedActive, setIsFilterToggleMenuActive } from "@/feature/reducers/appSlice";
 import { RootState } from "@/feature/store/store";
 import { useState } from "react";
 
@@ -30,6 +30,7 @@ const FilterToggleMenu = () => {
         <h1>FILTER</h1>
         <IoClose
           onClick={() => {
+          
             dispatch(setIsFilterToggleMenuActive(false));
           }}
           className="font-bold text-2xl cursor-pointer"
