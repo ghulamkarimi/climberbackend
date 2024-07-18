@@ -3,11 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 interface IAppState {
   isLogin: boolean;
   isMenuActive:boolean
+  isFilterToggleMenuActive:boolean
 }
 
 const initialState: IAppState = {
   isLogin: false,
-  isMenuActive:false
+  isMenuActive:false,
+  isFilterToggleMenuActive:false
 };
 
 const appSlice = createSlice({
@@ -20,9 +22,12 @@ const appSlice = createSlice({
     setIsMenuActive: (state, action) => {
       state.isMenuActive = action.payload;
     },
+    setIsFilterToggleMenuActive: (state, action) => {
+      state.isFilterToggleMenuActive = action.payload;
+    },
   },
 });
 
-export const {setIslogin,setIsMenuActive} = appSlice.actions
+export const {setIslogin,setIsMenuActive,setIsFilterToggleMenuActive} = appSlice.actions
 
 export default appSlice.reducer
