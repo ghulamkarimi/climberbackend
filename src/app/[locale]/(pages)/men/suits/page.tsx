@@ -4,7 +4,7 @@ import { IoFilterSharp } from "react-icons/io5";
 import FilterToggleMenu from "../../../components/filterMenu/FilterToggleMenu";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/feature/store/store";
-import { setIsFeaturedActive, setIsFilterToggleMenuActive } from "@/feature/reducers/appSlice";
+import { setInputValueSearchMenu, setIsFeaturedActive, setIsFilterToggleMenuActive } from "@/feature/reducers/appSlice";
 import FeaturedMenu from "../../../components/featuredMenu/FeaturedMenu";
 import SuitsSections from "../../../components/suitsSections/SuitsSections";
 
@@ -69,7 +69,9 @@ const Page = () => {
           <FeaturedMenu />
         </div>
       )}
-      <div>
+      <div onClick={()=>{
+        dispatch(setInputValueSearchMenu(""))
+      }}>
         <SuitsSections/>
       </div>
     </div>

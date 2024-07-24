@@ -1,6 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
 import Products from "../../components/productsCategories/Products";
+import { useSelector } from "react-redux";
+import { RootState } from "@/feature/store/store";
 
 export interface IProductsItems {
   id: string;
@@ -20,15 +22,15 @@ export interface ICategoriesItems {
   description: string;
 }
 
-interface ICategoriesProps{
-    params: {
-        locale: string;
-      };
+interface ICategoriesProps {
+  params: {
+    locale: string;
+  };
 }
 
-const Categories = ( {params: { locale }}:ICategoriesProps) => {
-
-    const router = useRouter()
+const Categories = ({ params: { locale } }: ICategoriesProps) => {
+  const router = useRouter();
+  const { inputValueSearchMenu } = useSelector((state: RootState) => state.app);
   const products: IProductsItems[] = [
     {
       id: "1",
@@ -128,26 +130,37 @@ const Categories = ( {params: { locale }}:ICategoriesProps) => {
       </div>
       <h2 className="mt-4 font-FONT_ROBOTO font-bold text-3xl">Categories</h2>
       <div className="flex flex-wrap gap-4 justify-center mt-4">
-        {categories.map((category) => (
-          <div
-          onClick={()=>{
-
-            router.push(`/${locale}/men/suits`);
-          }}
-          key={category.id} className="sm:w-72 h-full w-full p-4 border rounded-lg shadow-md cursor-pointer">
-            <div className="overflow-hidden rounded-lg">
-              <img
-                src={category.bild}
-                className="w-full h-64 max-h-64 object-cover hover:scale-105 transition-transform duration-300"
-                alt={category.title}
-              />
+        {categories
+          .filter(
+            (category) =>
+              category.title
+                .toLocaleLowerCase()
+                .includes(inputValueSearchMenu.toLocaleLowerCase()) ||
+              category.description
+                .toLocaleLowerCase()
+                .includes(inputValueSearchMenu.toLocaleLowerCase())
+          )
+          .map((category) => (
+            <div
+              onClick={() => {
+                router.push(`/${locale}/men/suits`);
+              }}
+              key={category.id}
+              className="sm:w-72 h-full w-full p-4 border rounded-lg shadow-md cursor-pointer"
+            >
+              <div className="overflow-hidden rounded-lg">
+                <img
+                  src={category.bild}
+                  className="w-full h-64 max-h-64 object-cover hover:scale-105 transition-transform duration-300"
+                  alt={category.title}
+                />
+              </div>
+              <div className="mt-3 text-center">
+                <h3 className="font-bold text-xl">{category.title}</h3>
+                <p className="text-gray-700">{category.description}</p>
+              </div>
             </div>
-            <div className="mt-3 text-center">
-              <h3 className="font-bold text-xl">{category.title}</h3>
-              <p className="text-gray-700">{category.description}</p>
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );
