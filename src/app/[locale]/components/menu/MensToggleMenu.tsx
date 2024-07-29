@@ -1,7 +1,6 @@
 "use client";
 
-import { IoMdClose, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { setIsMenuActive } from "@/feature/reducers/appSlice";
+import {  IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useTranslations } from "next-intl";
 import { useDispatch } from "react-redux";
 import { useState } from "react";

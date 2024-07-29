@@ -1,25 +1,25 @@
-"use client";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { IoFilterSharp } from "react-icons/io5";
-import FilterToggleMenu from "../../../components/filterMenu/FilterToggleMenu";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/feature/store/store";
-import { setInputValueSearchMenu, setIsFeaturedActive, setIsFilterToggleMenuActive } from "@/feature/reducers/appSlice";
-import FeaturedMenu from "../../../components/featuredMenu/FeaturedMenu";
-import SuitsSections from "../../../components/suitsSections/SuitsSections";
+'use client';
 
-const Page = () => {
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import { IoFilterSharp } from 'react-icons/io5';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/feature/store/store';
+import { setInputValueSearchMenu, setIsFeaturedActive, setIsFilterToggleMenuActive } from '@/feature/reducers/appSlice';
+import FilterToggleMenu from '../../../components/filterMenu/FilterToggleMenu';
+import FeaturedMenu from '../../../components/featuredMenu/FeaturedMenu';
+import SuitsSections, { ISuitsProps } from '../../../components/suitsSections/SuitsSections';
+
+
+const Page = ({ params: { locale } }: ISuitsProps) => {
   const dispatch = useDispatch();
   const { isFilterToggleMenuActive } = useSelector(
     (state: RootState) => state.app
   );
 
-  const {isFeaturedActive} = useSelector((state:RootState)=>state.app)
+  const { isFeaturedActive } = useSelector((state: RootState) => state.app);
 
   return (
-    <div
-    onClick={()=>{}}
-    >
+    <div onClick={() => {}}>
       <div className="">
         <div className="md:grid md:grid-cols-12 p-2">
           <div className="hidden md:col-span-3"></div>
@@ -46,12 +46,17 @@ const Page = () => {
                 )}
               </div>
             </button>
-            <button className="flex items-center gap-2 w-1/2 px-3 py-1 bg-slate-300 justify-between rounded-lg">
+            <button
+              className="flex items-center gap-2 w-1/2 px-3 py-1 bg-slate-300 justify-between rounded-lg"
+              onClick={() => {
+                dispatch(setIsFeaturedActive(!isFeaturedActive));
+              }}
+            >
               <div className="flex items-center gap-2">
                 <p>Featured</p>
               </div>
-              <div className="" onClick={()=>{dispatch(setIsFeaturedActive(!isFeaturedActive))}}>
-                {isFeaturedActive ? <IoIosArrowDown />:<IoIosArrowUp />}
+              <div>
+                {isFeaturedActive ? <IoIosArrowDown /> : <IoIosArrowUp />}
               </div>
             </button>
           </div>
@@ -59,7 +64,7 @@ const Page = () => {
         </div>
       </div>
       {isFilterToggleMenuActive && (
-        <div className={`md:hidden  opacity-100 p-4 `}>
+        <div className={`md:hidden opacity-100 p-4`}>
           <FilterToggleMenu />
         </div>
       )}
@@ -69,10 +74,12 @@ const Page = () => {
           <FeaturedMenu />
         </div>
       )}
-      <div onClick={()=>{
-        dispatch(setInputValueSearchMenu(""))
-      }}>
-        <SuitsSections/>
+      <div
+        onClick={() => {
+          dispatch(setInputValueSearchMenu(''));
+        }}
+      >
+        <SuitsSections params={{ locale }} />
       </div>
     </div>
   );
