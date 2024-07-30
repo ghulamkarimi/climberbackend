@@ -31,4 +31,6 @@ export interface ISuits {
   bildDetailsTow?: string;
   descriptions?:string
   evaluation:number
+  colors:string[]
+  sizes:string[]
 }

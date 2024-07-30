@@ -13,7 +13,7 @@ interface IMaxWithWrapperProps {
 }
 
 const MaxWithWrapper = ({ children, className }: IMaxWithWrapperProps) => {
-  const { isMenuActive, isFilterToggleMenuActive,isFeaturedActive,isSearchMenuActive } = useSelector(
+  const { isMenuActive, isAddCartMenuActive, isFilterToggleMenuActive,isFeaturedActive,isSearchMenuActive } = useSelector(
     (state: RootState) => state.app
   );
 const dispatch = useDispatch()

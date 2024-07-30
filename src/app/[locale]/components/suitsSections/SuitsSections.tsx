@@ -22,6 +22,13 @@ export const suits = [
     title: "Havana Perennial Anzug navy Tailor",
     price: "370$",
     evaluation:2,
+    sizes:["S","M","L","XL","XXL"],
+    colors: [  "#FF5733",
+    "#33FF57",
+    "#3357FF",
+    "#FFFF33",
+    "#FF33A1",
+    "#33FFF7",],
     descriptions:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ex quo numquam optio in qui natus dolorum minima itaque? Quia fugit modi reiciendis, cupiditate eius vitae doloremque quaerat architecto ratione. Praesentium sapiente deserunt vel maiores dicta molestias a natus, unde obcaecati molestiae aspernatur error reprehenderit consequuntur tempora. Dolorem, nihil placeat!"
   },
   {
@@ -34,6 +41,13 @@ export const suits = [
     title: "Havana Anzug grau",
     price: "400$",
     evaluation:1,
+    sizes:["S","M","L","XL","XXL"],
+    colors: [  "#FF5733",
+    "#33FF57",
+    "#3357FF",
+    "#FFFF33",
+    "#FF33A1",
+    "#33FFF7",],
     descriptions:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ex quo numquam optio in qui natus dolorum minima itaque? Quia fugit modi reiciendis, cupiditate eius vitae doloremque quaerat architecto ratione. Praesentium sapiente deserunt vel maiores dicta molestias a natus, unde obcaecati molestiae aspernatur error reprehenderit consequuntur tempora. Dolorem, nihil placeat!"
   },
   {
@@ -46,6 +60,13 @@ export const suits = [
     title: "Havana Perennial Anzug blue Tailor",
     price: "450$",
     evaluation:0,
+    sizes:["S","M","L","XL","XXL"],
+    colors: [  "#FF5733",
+    "#33FF57",
+    "#3357FF",
+    "#FFFF33",
+    "#FF33A1",
+    "#33FFF7",],
     descriptions:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ex quo numquam optio in qui natus dolorum minima itaque? Quia fugit modi reiciendis, cupiditate eius vitae doloremque quaerat architecto ratione. Praesentium sapiente deserunt vel maiores dicta molestias a natus, unde obcaecati molestiae aspernatur error reprehenderit consequuntur tempora. Dolorem, nihil placeat!"
   },
   {
@@ -58,6 +79,13 @@ export const suits = [
     title: "Havana Anzug black",
     price: "500$",
     evaluation:3,
+    sizes:["S","M","L","XL","XXL"],
+    colors: [  "#FF5733",
+    "#33FF57",
+    "#3357FF",
+    "#FFFF33",
+    "#FF33A1",
+    "#33FFF7",],
     descriptions:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ex quo numquam optio in qui natus dolorum minima itaque? Quia fugit modi reiciendis, cupiditate eius vitae doloremque quaerat architecto ratione. Praesentium sapiente deserunt vel maiores dicta molestias a natus, unde obcaecati molestiae aspernatur error reprehenderit consequuntur tempora. Dolorem, nihil placeat!"
   },
   {
@@ -70,6 +98,13 @@ export const suits = [
     title: "Havana Perennial Anzug beige Tailor",
     price: "370$",
     evaluation:0,
+    sizes:["S","M","L","XL","XXL"],
+    colors: [  "#FF5733",
+    "#33FF57",
+    "#3357FF",
+    "#FFFF33",
+    "#FF33A1",
+    "#33FFF7",],
     descriptions:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ex quo numquam optio in qui natus dolorum minima itaque? Quia fugit modi reiciendis, cupiditate eius vitae doloremque quaerat architecto ratione. Praesentium sapiente deserunt vel maiores dicta molestias a natus, unde obcaecati molestiae aspernatur error reprehenderit consequuntur tempora. Dolorem, nihil placeat!"
   },
   {
@@ -82,6 +117,13 @@ export const suits = [
     title: "Havana Anzug braun",
     price: "420$",
     evaluation:1.5,
+    sizes:["S","M","L","XL","XXL"],
+    colors: [  "#FF5733",
+    "#33FF57",
+    "#3357FF",
+    "#FFFF33",
+    "#FF33A1",
+    "#33FFF7",],
     descriptions:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ex quo numquam optio in qui natus dolorum minima itaque? Quia fugit modi reiciendis, cupiditate eius vitae doloremque quaerat architecto ratione. Praesentium sapiente deserunt vel maiores dicta molestias a natus, unde obcaecati molestiae aspernatur error reprehenderit consequuntur tempora. Dolorem, nihil placeat!"
   },
   {
@@ -94,6 +136,13 @@ export const suits = [
     title: "Havana Perennial Anzug green Tailor",
     price: "470$",
     evaluation:0,
+    sizes:["S","M","L","XL","XXL"],
+    colors: [  "#FF5733",
+    "#33FF57",
+    "#3357FF",
+    "#FFFF33",
+    "#FF33A1",
+    "#33FFF7",],
     descriptions:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ex quo numquam optio in qui natus dolorum minima itaque? Quia fugit modi reiciendis, cupiditate eius vitae doloremque quaerat architecto ratione. Praesentium sapiente deserunt vel maiores dicta molestias a natus, unde obcaecati molestiae aspernatur error reprehenderit consequuntur tempora. Dolorem, nihil placeat!"
   },
   {
@@ -106,6 +155,13 @@ export const suits = [
     title: "Havana Anzug white",
     price: "390$",
     evaluation:0,
+    sizes:["S","M","L","XL","XXL"],
+    colors: [  "#FF5733",
+    "#33FF57",
+    "#3357FF",
+    "#FFFF33",
+    "#FF33A1",
+    "#33FFF7",],
     descriptions:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ex quo numquam optio in qui natus dolorum minima itaque? Quia fugit modi reiciendis, cupiditate eius vitae doloremque quaerat architecto ratione. Praesentium sapiente deserunt vel maiores dicta molestias a natus, unde obcaecati molestiae aspernatur error reprehenderit consequuntur tempora. Dolorem, nihil placeat!"
   }
 ];

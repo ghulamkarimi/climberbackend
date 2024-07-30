@@ -6,6 +6,7 @@ interface IAppState {
   isFilterToggleMenuActive:boolean
   isFeaturedActive:boolean
   isSearchMenuActive:boolean
+  isAddCartMenuActive:boolean
   inputValueSearchMenu:string
 }
 
@@ -15,6 +16,7 @@ const initialState: IAppState = {
   isFilterToggleMenuActive:false,
   isFeaturedActive:false,
   isSearchMenuActive:false,
+  isAddCartMenuActive:false,
   inputValueSearchMenu:''
 };
 
@@ -40,9 +42,12 @@ const appSlice = createSlice({
     setInputValueSearchMenu: (state, action) => {
       state.inputValueSearchMenu = action.payload;
     },
+    setIsAddCartMenuActive: (state, action) => {
+      state.isAddCartMenuActive = action.payload;
+    },
   },
 });
 
-export const {setIslogin,setIsMenuActive,setIsFilterToggleMenuActive,setIsFeaturedActive,setIsSearchMenuActive,setInputValueSearchMenu} = appSlice.actions
+export const {setIslogin,setIsMenuActive,setIsFilterToggleMenuActive,setIsFeaturedActive,setIsSearchMenuActive,setInputValueSearchMenu,setIsAddCartMenuActive} = appSlice.actions
 
 export default appSlice.reducer

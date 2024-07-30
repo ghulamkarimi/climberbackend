@@ -5,14 +5,14 @@ import { IoBagOutline } from "react-icons/io5";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/feature/store/store";
-import { setIsMenuActive, setIsSearchMenuActive } from "@/feature/reducers/appSlice";
+import { setIsAddCartMenuActive, setIsMenuActive, setIsSearchMenuActive } from "@/feature/reducers/appSlice";
 import ToggleMenu from "./ToggleMenu";
 import SearchMenu from "./searchMenu/SearchMenu";
 
 const Menu = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { isMenuActive, isSearchMenuActive } = useSelector(
+  const { isMenuActive, isSearchMenuActive,isAddCartMenuActive } = useSelector(
     (state: RootState) => state.app
   );
 
@@ -51,7 +51,11 @@ const Menu = () => {
                 router.push("/auth");
               }}
             />
-            <IoBagOutline className="cursor-pointer" />
+            <IoBagOutline
+            onClick={()=>{
+              dispatch(setIsAddCartMenuActive(!isAddCartMenuActive))
+            }}
+            className="cursor-pointer" />
           </div>
         </div>
         {isMenuActive && (
