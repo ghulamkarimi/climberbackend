@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { getSuitsById } from "@/src/app/[locale]/components/suitsSections/SuitsSections";
-import { ISuits } from "@/interface";
+import { IProducts } from "@/interface";
 import { useParams } from "next/navigation";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
@@ -26,7 +26,7 @@ const Page = () => {
   const dispatch = useDispatch();
   const { isAddCartMenuActive } = useSelector((state: RootState) => state.app);
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
-  const [suit, setSuit] = useState<ISuits | null>(null);
+  const [suit, setSuit] = useState<IProducts | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
 

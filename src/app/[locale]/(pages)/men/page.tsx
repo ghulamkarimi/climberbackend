@@ -3,24 +3,9 @@ import { useRouter } from "next/navigation";
 import Products from "../../components/productsCategories/Products";
 import { useSelector } from "react-redux";
 import { RootState } from "@/feature/store/store";
+import {    ICategorieItemsMen,  TProducts } from "@/interface";
 
-export interface IProductsItems {
-  id: string;
-  art: string;
-  categories: string;
-  title: string;
-  price: string;
-  size: string;
-  bewertung: number;
-  bild: string;
-}
 
-export interface ICategoriesItems {
-  id: string;
-  bild: string;
-  title: string;
-  description: string;
-}
 
 interface ICategoriesProps {
   params: {
@@ -31,10 +16,9 @@ interface ICategoriesProps {
 const Categories = ({ params: { locale } }: ICategoriesProps) => {
   const router = useRouter();
   const { inputValueSearchMenu } = useSelector((state: RootState) => state.app);
-  const products: IProductsItems[] = [
+  const products: ICategorieItemsMen[] = [
     {
       id: "1",
-      art: "herren",
       categories: "anzug",
       title: "Anzug blau und cravat",
       price: "360 eu",
@@ -44,7 +28,6 @@ const Categories = ({ params: { locale } }: ICategoriesProps) => {
     },
     {
       id: "2",
-      art: "herren",
       categories: "T-shirts",
       title: "anzug",
       price: "360 eu",
@@ -54,7 +37,6 @@ const Categories = ({ params: { locale } }: ICategoriesProps) => {
     },
     {
       id: "3",
-      art: "herren",
       categories: "anzug",
       title: "Anzug",
       price: "360 eu",
@@ -64,7 +46,6 @@ const Categories = ({ params: { locale } }: ICategoriesProps) => {
     },
     {
       id: "4",
-      art: "herren",
       categories: "",
       title: "Anzug",
       price: "360 eu",
@@ -74,48 +55,48 @@ const Categories = ({ params: { locale } }: ICategoriesProps) => {
     },
   ];
 
-  const categories: ICategoriesItems[] = [
+  const categories: TProducts[] = [
     {
       id: "1",
       bild: "/anzug/bildFive.jpg",
       title: "Suits",
-      description: "Description for category 1",
+      descriptions: "Description for category 1",
     },
     {
       id: "2",
       bild: "/shirt/shirtOne.jpg",
       title: "Shirt",
-      description: "Description for category 2",
+      descriptions: "Description for category 2",
     },
     {
       id: "3",
       bild: "/underdress/undressOne.jpg",
       title: "UNDERDRESS",
-      description: "Description for category 3",
+      descriptions: "Description for category 3",
     },
     {
       id: "4",
       bild: "/pants/pantsOne.jpg",
       title: "PANTS",
-      description: "Description for category 4",
+      descriptions: "Description for category 4",
     },
     {
       id: "5",
       bild: "/socks/socksOne.jpg",
       title: "Socks",
-      description: "Description for category 5",
+      descriptions: "Description for category 5",
     },
     {
       id: "6",
       bild: "/shoes/shoesOne.jpg",
       title: "Shoes",
-      description: "Description for category 6",
+      descriptions: "Description for category 6",
     },
     {
       id: "7",
       bild: "/ties/tiesOne.jpg",
       title: "Ties",
-      description: "Description for category 7",
+      descriptions: "Description for category 7",
     },
   ];
 
@@ -133,10 +114,10 @@ const Categories = ({ params: { locale } }: ICategoriesProps) => {
         {categories
           .filter(
             (category) =>
-              category.title
+            category.title || ""
                 .toLocaleLowerCase()
                 .includes(inputValueSearchMenu.toLocaleLowerCase()) ||
-              category.description
+              category.descriptions || ""
                 .toLocaleLowerCase()
                 .includes(inputValueSearchMenu.toLocaleLowerCase())
           )
@@ -157,7 +138,7 @@ const Categories = ({ params: { locale } }: ICategoriesProps) => {
               </div>
               <div className="mt-3 text-center">
                 <h3 className="font-bold text-xl">{category.title}</h3>
-                <p className="text-gray-700">{category.description}</p>
+                <p className="text-gray-700">{category.descriptions}</p>
               </div>
             </div>
           ))}
