@@ -28,7 +28,9 @@ const Login = () => {
 try {
     const response = await dispatch(userLoginApi(values)).unwrap()
     NotificationService.success(response.message)
-    console.log("responseLogin ",response.message)
+    localStorage.setItem("userId", response.userInfo._id);
+    localStorage.setItem("exp",response.userInfo.exp)
+    console.log("responseLogin ",response)
     setTimeout(() => {
         router.push("/")
     }, 3000);

@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import appReducer from "../reducers/appSlice"
-import userReducer from "../reducers/userSlice"
+import userReducer, { setToken } from "../reducers/userSlice"
+import { axiosJwt, refreshToken } from "@/service";
 
 const store = configureStore({
     reducer:{
@@ -8,7 +9,18 @@ const store = configureStore({
         users:userReducer
     }
 })
-
+ axiosJwt.interceptors.request.use(async(config)=>{
+    const currentDate = new Date()
+    const exp = localStorage.getItem("exp")
+    if (Number(exp) * 1000 > currentDate.getDate()) {
+        const response = await refreshToken();
+        config.headers.Authorization = `Bearer ${response.data.refreshToken}`;
+        store.dispatch(setToken(response.data.refreshToken));
+        // store.dispatch(setUserInfoRefresh(response.data.userInfo_refresh));
+      }
+      return config;
+}) 
+ 
 
 
 
