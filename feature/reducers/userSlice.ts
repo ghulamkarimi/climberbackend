@@ -1,4 +1,4 @@
-import { IUser, TUser } from "@/interface";
+import { IUser, IUserInfo, TUser } from "@/interface";
 import { checkToken, userLogin, userRegister } from "@/service";
 import {
   EntityState,
@@ -12,6 +12,8 @@ interface IUserState {
   status: "pending" | "fulfilled" | "rejected";
   error: string | null;
   token: string;
+  userInfo:IUserInfo,
+  userId:string
 }
 
 const userAdapter = createEntityAdapter<IUser, string>({
@@ -23,6 +25,18 @@ const initialState: IUserState & EntityState<IUser, string> =
     status: "pending",
     error: null,
     token: "",
+    userInfo:{
+      userId:"",
+      firstName:"",
+      lastName:"",
+      email:"",
+      profile_photo:"",
+      exp:"",
+      iat:"",
+      isAdmin:false,
+      address:{}
+    },
+    userId:""
   });
 
 export const userRegisterApi = createAsyncThunk(
@@ -74,6 +88,12 @@ const userSlice = createSlice({
     setToken: (state, action) => {
       state.token = action.payload;
     },
+    setUserInfo: (state, action) => {
+      state.userInfo = action.payload;
+    },
+    setUserId: (state, action) => {
+      state.userId = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -92,6 +112,7 @@ const userSlice = createSlice({
       })
       .addCase(userLoginApi.fulfilled, (state, action) => {
         userAdapter.setOne(state, action.payload.user);
+        state.userInfo = action.payload.userInfo; 
       })
       .addCase(userLoginApi.rejected, (state, action) => {
         state.status = "rejected";
@@ -103,5 +124,5 @@ const userSlice = createSlice({
 export const { selectAll: displayAllUsers, selectById: displayUser } =
   userAdapter.getSelectors((state: RootState) => state.users);
 
-export const {setToken} = userSlice.actions;
+export const {setToken,setUserId,setUserInfo} = userSlice.actions;
 export default userSlice.reducer;

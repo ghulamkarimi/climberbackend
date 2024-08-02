@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { CiMenuBurger, CiSearch } from "react-icons/ci";
-import { IoBagOutline } from "react-icons/io5";
+import { IoAddOutline, IoBagOutline } from "react-icons/io5";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/feature/store/store";
@@ -15,6 +15,10 @@ const Menu = () => {
   const { isMenuActive, isSearchMenuActive,isAddCartMenuActive } = useSelector(
     (state: RootState) => state.app
   );
+  const { userInfo } = useSelector(
+    (state: RootState) => state.users
+  );
+
 
   return (
     <div>
@@ -56,6 +60,9 @@ const Menu = () => {
               dispatch(setIsAddCartMenuActive(!isAddCartMenuActive))
             }}
             className="cursor-pointer" />
+           {
+            userInfo.isAdmin&& <IoAddOutline />
+           }
           </div>
         </div>
         {isMenuActive && (

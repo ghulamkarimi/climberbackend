@@ -1,5 +1,5 @@
 import { setIslogin } from "@/feature/reducers/appSlice";
-import { userLoginApi } from "@/feature/reducers/userSlice";
+import { setUserInfo, userLoginApi } from "@/feature/reducers/userSlice";
 import { AppDispatch } from "@/feature/store/store";
 import { TUser } from "@/interface";
 import { NotificationService } from "@/service/notificationService/NotificationService";
@@ -28,6 +28,7 @@ const Login = () => {
 try {
     const response = await dispatch(userLoginApi(values)).unwrap()
     NotificationService.success(response.message)
+    dispatch(setUserInfo(response.userInfo))
     localStorage.setItem("userId", response.userInfo._id);
     localStorage.setItem("exp",response.userInfo.exp)
     console.log("responseLogin ",response)

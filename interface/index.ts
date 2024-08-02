@@ -48,3 +48,14 @@ export interface ICategorieItemsMen {
   bild: string;
 }
 
+export interface IUserInfo{
+  userId: string;
+  firstName:string;
+  lastName:string;
+  email:string;
+  profile_photo:string;
+  exp:string;
+  iat:string;
+  isAdmin:boolean;
+  address:object
+}
