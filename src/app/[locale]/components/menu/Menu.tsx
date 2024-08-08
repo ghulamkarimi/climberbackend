@@ -18,7 +18,7 @@ const Menu = () => {
   const { userInfo } = useSelector(
     (state: RootState) => state.users
   );
-
+console.log("userInfo.Admin",userInfo.isAdmin)
 
   return (
     <div>
