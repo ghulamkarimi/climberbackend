@@ -1,13 +1,14 @@
 "use client";
 
+import { ITopProducts } from "@/interface/products";
 import { useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ReactStars from "react-stars";
-import { ICategories } from "@/interface/categories";
+
 
 export interface CarouselProps {
-  items: ICategories[];
+  items:ITopProducts[];
   numberItemsDesktop?: number;
   numberItemsTablet?: number;
   numberItemsMobile?: number;
@@ -51,7 +52,7 @@ const Products = ({
       >
         {items &&
           items.map((products) => (
-            <div key={products.id} className=" w-full flex flex-col items-center p-2 cursor-pointer ">
+            <div key={products._id} className=" w-full flex flex-col items-center p-2 cursor-pointer ">
               <div className="overflow-hidden rounded-lg w-full p-2">
                 <img
                   src={products.photo}
@@ -64,7 +65,7 @@ const Products = ({
                 <ReactStars
                 count={5}
                 size={24}
-                value={products.bewertung}
+                value={products.evaluation}
                 color2={"#ffd700"}
                 edit={false}
               />              </div>

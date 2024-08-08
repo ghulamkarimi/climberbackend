@@ -4,6 +4,8 @@ import userReducer, { setToken } from "../reducers/userSlice";
 import { axiosJwt, refreshToken } from "@/service";
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; 
+import topProductsReducer, { getTopProductsApi } from "../reducers/topProducts";
+import categoriesReducer, { getCategoriesApi } from "../reducers/categoriesSlice";
 
 const persistConfig = {
   key: 'root',
@@ -14,6 +16,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   app: appReducer,
   users: userReducer,
+  topProducts: topProductsReducer,
+  categories: categoriesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -34,6 +38,10 @@ const store = configureStore({
 store.subscribe(() => {
   console.log('Store state:', store.getState());
 });
+
+store.dispatch(getCategoriesApi());
+store.dispatch(getTopProductsApi());
+
 
 axiosJwt.interceptors.request.use(async (config) => {
   const currentDate = new Date();

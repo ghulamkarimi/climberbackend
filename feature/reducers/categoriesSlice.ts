@@ -2,7 +2,7 @@ import { ICategories } from "@/interface/categories";
 import { createAsyncThunk, createEntityAdapter, createSlice, EntityState } from "@reduxjs/toolkit";
 import { getCategories, createCategories, deleteCategories, editCategories } from '../../service/index';
 import { RootState } from "../store/store";
-import Categories from '../../src/app/[locale]/(pages)/men/page';
+
 
 
 interface ICategoriesState {
@@ -66,6 +66,7 @@ const categoriesSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getCategoriesApi.pending, (state, action) => {
+            console.log('Categories API fulfilled:', action.payload);
             state.status = "pending";
         });
         builder.addCase(getCategoriesApi.fulfilled, (state, action) => {

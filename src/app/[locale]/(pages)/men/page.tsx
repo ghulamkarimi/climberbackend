@@ -3,8 +3,9 @@ import { useRouter } from "next/navigation";
 import Products from "../../components/productsCategories/Products";
 import { useSelector } from "react-redux";
 import { RootState } from "@/feature/store/store";
-import { ICategorieItemsMen } from "@/interface";
 import { displayAllCategories } from "@/feature/reducers/categoriesSlice";
+import { displayAllTopProducts } from "@/feature/reducers/topProducts";
+import { ITopProducts } from "@/interface/products";
 
 
 
@@ -17,55 +18,21 @@ interface ICategoriesProps {
 const Categories = ({ params: { locale } }: ICategoriesProps) => {
   const router = useRouter();
   const { inputValueSearchMenu } = useSelector((state: RootState) => state.app);
-  const products: ICategorieItemsMen[] = [
-    {
-      id: "1",
-      categories: "anzug",
-      title: "Anzug blau und cravat",
-      price: "360 eu",
-      size: "48",
-      bewertung: 4.1,
-      bild: "/anzug/bildOne.jpg",
-    },
-    {
-      id: "2",
-      categories: "T-shirts",
-      title: "anzug",
-      price: "360 eu",
-      size: "42",
-      bewertung: 4.9,
-      bild: "/anzug/bildTwo.jpg",
-    },
-    {
-      id: "3",
-      categories: "anzug",
-      title: "Anzug",
-      price: "360 eu",
-      size: "52",
-      bewertung: 4.1,
-      bild: "/anzug/bildThree.jpg",
-    },
-    {
-      id: "4",
-      categories: "",
-      title: "Anzug",
-      price: "360 eu",
-      size: "52",
-      bewertung: 4.8,
-      bild: "/anzug/bildFour.jpg",
-    },
-  ];
+  const topProducts = useSelector(displayAllTopProducts);
+  console.log("products",topProducts);
+  const categories = useSelector(displayAllCategories)
+  const productFilterByCategory = topProducts.filter((product) => product.category === "men");
 
  
-  const categories = useSelector(displayAllCategories)
+  
   return (
     <div>
       <h1 className="flex justify-center font-FONT_VIGA text-3xl font-bold mt-2 uppercase py-4">
         Our Collections
       </h1>
-      <h2 className="mt-4 font-FONT_ROBOTO font-bold text-3xl">Products</h2>
+      <h2 className="mt-4 font-FONT_ROBOTO font-bold text-3xl">Top Products</h2>
       <div className="w-full">
-        <Products items={products} />
+        <Products items={productFilterByCategory} />
       </div>
       <h2 className="mt-4 font-FONT_ROBOTO font-bold text-3xl">Categories</h2>
       <div className="flex flex-wrap gap-4 justify-center mt-4">
