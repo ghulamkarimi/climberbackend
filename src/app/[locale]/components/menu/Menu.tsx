@@ -9,6 +9,7 @@ import { setIsAddCartMenuActive, setIsMenuActive, setIsSearchMenuActive } from "
 import ToggleMenu from "./ToggleMenu";
 import SearchMenu from "./searchMenu/SearchMenu";
 
+
 const Menu = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const Menu = () => {
     (state: RootState) => state.users
   );
 
+ 
 
   return (
     <div>

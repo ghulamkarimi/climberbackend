@@ -3,7 +3,8 @@ import { useRouter } from "next/navigation";
 import Products from "../../components/productsCategories/Products";
 import { useSelector } from "react-redux";
 import { RootState } from "@/feature/store/store";
-import {    ICategorieItemsMen,  TProducts } from "@/interface";
+import { ICategorieItemsMen } from "@/interface";
+import { displayAllCategories } from "@/feature/reducers/categoriesSlice";
 
 
 
@@ -55,51 +56,8 @@ const Categories = ({ params: { locale } }: ICategoriesProps) => {
     },
   ];
 
-  const categories: TProducts[] = [
-    {
-      id: "1",
-      bild: "/anzug/bildFive.jpg",
-      title: "Suits",
-      descriptions: "Description for category 1",
-    },
-    {
-      id: "2",
-      bild: "/shirt/shirtOne.jpg",
-      title: "Shirt",
-      descriptions: "Description for category 2",
-    },
-    {
-      id: "3",
-      bild: "/underdress/undressOne.jpg",
-      title: "UNDERDRESS",
-      descriptions: "Description for category 3",
-    },
-    {
-      id: "4",
-      bild: "/pants/pantsOne.jpg",
-      title: "PANTS",
-      descriptions: "Description for category 4",
-    },
-    {
-      id: "5",
-      bild: "/socks/socksOne.jpg",
-      title: "Socks",
-      descriptions: "Description for category 5",
-    },
-    {
-      id: "6",
-      bild: "/shoes/shoesOne.jpg",
-      title: "Shoes",
-      descriptions: "Description for category 6",
-    },
-    {
-      id: "7",
-      bild: "/ties/tiesOne.jpg",
-      title: "Ties",
-      descriptions: "Description for category 7",
-    },
-  ];
-
+ 
+  const categories = useSelector(displayAllCategories)
   return (
     <div>
       <h1 className="flex justify-center font-FONT_VIGA text-3xl font-bold mt-2 uppercase py-4">
@@ -117,7 +75,7 @@ const Categories = ({ params: { locale } }: ICategoriesProps) => {
             category.title || ""
                 .toLocaleLowerCase()
                 .includes(inputValueSearchMenu.toLocaleLowerCase()) ||
-              category.descriptions || ""
+              category.description || ""
                 .toLocaleLowerCase()
                 .includes(inputValueSearchMenu.toLocaleLowerCase())
           )
@@ -126,19 +84,19 @@ const Categories = ({ params: { locale } }: ICategoriesProps) => {
               onClick={() => {
                 router.push(`/${locale}/men/suits`);
               }}
-              key={category.id}
+              key={category._id}
               className="sm:w-72 h-full w-full p-4 border rounded-lg shadow-md cursor-pointer"
             >
               <div className="overflow-hidden rounded-lg">
                 <img
-                  src={category.bild}
+                  src={category.photo}
                   className="w-full h-64 max-h-64 object-cover hover:scale-105 transition-transform duration-300"
                   alt={category.title}
                 />
               </div>
               <div className="mt-3 text-center">
                 <h3 className="font-bold text-xl">{category.title}</h3>
-                <p className="text-gray-700">{category.descriptions}</p>
+                <p className="text-gray-700">{category.description}</p>
               </div>
             </div>
           ))}

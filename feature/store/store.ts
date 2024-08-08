@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import appReducer from "../reducers/appSlice"
 import userReducer, { setToken } from "../reducers/userSlice"
+import categoriesReducer, { getCategoriesApi } from "../reducers/categoriesSlice"
 import { axiosJwt, refreshToken } from "@/service";
 
 const store = configureStore({
     reducer:{
         app:appReducer,
-        users:userReducer
+        users:userReducer,
+        categories:categoriesReducer                
     }
 })
  axiosJwt.interceptors.request.use(async(config)=>{
@@ -22,7 +24,7 @@ const store = configureStore({
 }) 
  
 
-
+store.dispatch(getCategoriesApi());
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
