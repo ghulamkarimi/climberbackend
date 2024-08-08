@@ -17,6 +17,8 @@ interface IRootLayoutProps {
   className?: string;
 }
 
+
+
 export default async function LocaleLayout({
   children,
   params: { locale },

@@ -3,11 +3,11 @@
 import { useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { IProductsItems } from "../../(pages)/men/page";
 import ReactStars from "react-stars";
+import { ICategories } from "@/interface/categories";
 
 export interface CarouselProps {
-  items: IProductsItems[];
+  items: ICategories[];
   numberItemsDesktop?: number;
   numberItemsTablet?: number;
   numberItemsMobile?: number;
@@ -54,7 +54,7 @@ const Products = ({
             <div key={products.id} className=" w-full flex flex-col items-center p-2 cursor-pointer ">
               <div className="overflow-hidden rounded-lg w-full p-2">
                 <img
-                  src={products.bild}
+                  src={products.photo}
                   className=" h-80 w-80 hover:scale-105 duration-300 hover:brightness-50 rounded-lg"
                   alt={products.title}
                 />
