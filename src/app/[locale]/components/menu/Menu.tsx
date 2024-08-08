@@ -20,7 +20,6 @@ const Menu = () => {
     (state: RootState) => state.users
   );
 
- 
 
   return (
     <div>
