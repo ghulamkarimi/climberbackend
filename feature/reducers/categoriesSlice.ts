@@ -2,6 +2,7 @@ import { ICategories } from "@/interface/categories";
 import { createAsyncThunk, createEntityAdapter, createSlice, EntityState } from "@reduxjs/toolkit";
 import { getCategories, createCategories, deleteCategories, editCategories } from '../../service/index';
 import { RootState } from "../store/store";
+import Categories from '../../src/app/[locale]/(pages)/men/page';
 
 
 
@@ -43,9 +44,10 @@ export const createCategoriesApi = createAsyncThunk("/categories/createCategorie
 
 export const deleteCategoriesApi = createAsyncThunk(
   "/categories/deleteCategoriesApi",
-  async ({ userId, categorieId }: { userId: string; categorieId: ICategories }) => {
+  async ({ userId, _id}: { userId: string; _id: string }) => {
     try {
-      const response = await deleteCategories(userId, {categorieId} );
+      const response = await deleteCategories(userId, _id );
+      console.log("response",response)
       return response.data;
     } catch (error: any) {
       throw error.response.data.message;
@@ -89,7 +91,7 @@ const categoriesSlice = createSlice({
             categoriesAdapter.setOne(state,action.payload.category)
         })
         builder.addCase(deleteCategoriesApi.fulfilled,(state,action)=>{
-            categoriesAdapter.removeOne(state,action.payload._id)
+            categoriesAdapter.removeOne(state,action.payload.category._id)
         })
     }
 })

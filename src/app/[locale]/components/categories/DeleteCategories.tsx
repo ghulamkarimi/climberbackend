@@ -35,7 +35,10 @@ const DeleteCategories = ({ page }: IDeleteCategories) => {
     switch (page) {
       case "men":
         try {
-        
+          
+          const response = await dispatch(deleteCategoriesApi({ userId: userId!, _id: category._id }));
+          console.log("response", response);
+         
           NotificationService.success("Men category deleted successfully");
         } catch (error: any) {
           console.log("Error in handleDelete:", error.message);
