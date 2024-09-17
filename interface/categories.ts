@@ -5,3 +5,10 @@ export interface ICategories {
     photo: File  | null ;
     description: string;
   }
+
+
+
+
+
+  export type TCategories = Partial<ICategories>;
+

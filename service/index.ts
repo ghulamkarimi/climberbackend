@@ -1,6 +1,6 @@
 import axios from "axios";
 import { TUser } from "@/interface";
-import { ICategories } from "@/interface/categories";
+import { ICategories, TCategories } from "@/interface/categories";
 import { IProducts , ITopProducts } from "@/interface/products";
 
 const Server_Url = "http://localhost:3009";
@@ -58,10 +58,31 @@ export const deleteCategories = (userId: string, _id: string ) => {
   return axios.delete(url, { data: { userId,  categoryId:_id } });
 };
 
-export const editCategories = (id: string, category: ICategories) => {
-  const url = `${Server_Url}/categories/edit/${id}`;
-  return axios.put(url, category);
-}
+
+
+export const editCategories = (categoryId: string, category: TCategories) => {
+  const formData = new FormData();
+  formData.append("categoryId", categoryId);  
+  formData.append("userId", category._id || "");  
+  formData.append("categories", category.categories || "");
+  formData.append("title", category.title|| "");
+  if (category.photo) {
+    formData.append("photo", category.photo);
+  }
+  formData.append("description", category.description || "");
+
+  const url = `${Server_Url}/categories/edit`;
+  return axios.put(url, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    }
+  });
+};
+
+
+
+
+
 
 
 // Products
