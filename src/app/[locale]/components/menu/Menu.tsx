@@ -8,6 +8,7 @@ import { RootState } from "@/feature/store/store";
 import { setIsAddCartMenuActive, setIsMenuActive, setIsSearchMenuActive } from "@/feature/reducers/appSlice";
 import ToggleMenu from "./ToggleMenu";
 import SearchMenu from "./searchMenu/SearchMenu";
+import { setIsCreateCategorieOpen } from "@/feature/reducers/categoriesSlice";
 
 
 const Menu = () => {
@@ -15,6 +16,9 @@ const Menu = () => {
   const dispatch = useDispatch();
   const { isMenuActive, isSearchMenuActive,isAddCartMenuActive } = useSelector(
     (state: RootState) => state.app
+  );
+  const { isCreateCategorieOpen } = useSelector(
+    (state: RootState) => state.categories
   );
   const { userInfo } = useSelector(
     (state: RootState) => state.users
@@ -62,7 +66,9 @@ const Menu = () => {
             }}
             className="cursor-pointer" />
            {
-            userInfo.isAdmin&& <IoAddOutline />
+            userInfo.isAdmin&& <IoAddOutline className=" cursor-pointer" onClick={()=>{
+dispatch(setIsCreateCategorieOpen(!isCreateCategorieOpen))
+            }} />
            }
           </div>
         </div>

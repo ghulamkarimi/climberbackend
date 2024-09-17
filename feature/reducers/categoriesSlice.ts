@@ -8,7 +8,7 @@ import { RootState } from "../store/store";
 interface ICategoriesState {
     status: "pending" | "fulfilled" | "rejected";
     error: string | null;
-
+isCreateCategorieOpen:boolean
 }
 
 const categoriesAdapter = createEntityAdapter<ICategories, string>({
@@ -20,6 +20,7 @@ const initialState: ICategoriesState & EntityState<ICategories, string> =
     categoriesAdapter.getInitialState({
         status: "pending",
         error: null,
+        isCreateCategorieOpen:false
     });
 
 export const getCategoriesApi = createAsyncThunk("/categories/getCategoriesApi", async () => {
@@ -40,15 +41,18 @@ export const createCategoriesApi = createAsyncThunk("/categories/createCategorie
     }
 });
 
-export const deleteCategoriesApi = createAsyncThunk("/categories/deleteCategoriesApi", async (_id: string) => {
+export const deleteCategoriesApi = createAsyncThunk(
+  "/categories/deleteCategoriesApi",
+  async ({ userId, categorieId }: { userId: string; categorieId: ICategories }) => {
     try {
-        const response = await deleteCategories(_id);
-        return response.data;
+      const response = await deleteCategories(userId, {categorieId} );
+      return response.data;
     } catch (error: any) {
-        throw error.response.data.message;
+      throw error.response.data.message;
     }
-}
+  }
 );
+
 
 export const editCategoriesApi = createAsyncThunk("/categories/editCategoriesApi", async ({ _id, category }: { _id: string, category: ICategories }) => {
     try {
@@ -63,7 +67,11 @@ export const editCategoriesApi = createAsyncThunk("/categories/editCategoriesApi
 const categoriesSlice = createSlice({
     name: "categories",
     initialState,
-    reducers: {},
+    reducers: {
+        setIsCreateCategorieOpen:(state,action)=>{
+            state.isCreateCategorieOpen = action.payload
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(getCategoriesApi.pending, (state, action) => {
             console.log('Categories API fulfilled:', action.payload);
@@ -77,8 +85,17 @@ const categoriesSlice = createSlice({
             state.status = "rejected";
             state.error = action.error.message || "is accorded";
         });
+        builder.addCase(createCategoriesApi.fulfilled,(state,action)=>{
+            categoriesAdapter.setOne(state,action.payload.category)
+        })
+        builder.addCase(deleteCategoriesApi.fulfilled,(state,action)=>{
+            categoriesAdapter.removeOne(state,action.payload._id)
+        })
     }
 })
+
+
+export const  {setIsCreateCategorieOpen} = categoriesSlice.actions
 
 export const { selectAll: displayAllCategories, selectById: displayCategory } =
     categoriesAdapter.getSelectors((state: RootState) => state.categories);

@@ -1,6 +1,4 @@
-"use client"; 
-
-
+"use client";
 
 import { setIsFeaturedActive, setIsSearchMenuActive } from "@/feature/reducers/appSlice";
 import { RootState } from "@/feature/store/store";
@@ -13,21 +11,36 @@ interface IMaxWithWrapperProps {
 }
 
 const MaxWithWrapper = ({ children, className }: IMaxWithWrapperProps) => {
-  const { isMenuActive, isAddCartMenuActive, isFilterToggleMenuActive,isFeaturedActive,isSearchMenuActive } = useSelector(
+  const { isMenuActive, isFeaturedActive, isSearchMenuActive } = useSelector(
     (state: RootState) => state.app
   );
-const dispatch = useDispatch()
+  const { isCreateCategorieOpen } = useSelector(
+    (state: RootState) => state.categories
+  );
+  const dispatch = useDispatch();
+
   return (
-    <div
-    onClick={()=>{
-      isFeaturedActive&&dispatch(setIsFeaturedActive(false))
-      isSearchMenuActive&&dispatch(setIsSearchMenuActive(false))
-    }}
-      className={`mx-auto w-full max-w-screen-3xl px-2.5 ${
-        isMenuActive  /* || isFilterToggleMenuActive */  ? "opacity-50" : ""
-      } ${className}`}
-    >
-      {children}
+    <div className="">
+      {/* Background overlay for menu opacity effect */}
+
+      {/* Background overlay for category creation blur effect */}
+      {isCreateCategorieOpen && (
+        <div className="fixed inset-0 backdrop-blur-lg z-50 pointer-events-none" />
+      )}
+      
+      {/* Content wrapper */}
+      <div
+        onClick={() => {
+          isFeaturedActive && dispatch(setIsFeaturedActive(false));
+          isSearchMenuActive && dispatch(setIsSearchMenuActive(false));
+        }}
+        className={`${
+          isMenuActive  /* || isFilterToggleMenuActive */  ? "opacity-50" : ""
+        }`}
+       
+      >
+        {children}
+      </div>
     </div>
   );
 };

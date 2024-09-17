@@ -2,22 +2,24 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface IAppState {
   isLogin: boolean;
-  isMenuActive:boolean
-  isFilterToggleMenuActive:boolean
-  isFeaturedActive:boolean
-  isSearchMenuActive:boolean
-  isAddCartMenuActive:boolean
-  inputValueSearchMenu:string
+  isMenuActive: boolean;
+  isFilterToggleMenuActive: boolean;
+  isFeaturedActive: boolean;
+  isSearchMenuActive: boolean;
+  isAddCartMenuActive: boolean;
+  isSpinnerActive: boolean;
+  inputValueSearchMenu: string;
 }
 
 const initialState: IAppState = {
   isLogin: false,
-  isMenuActive:false,
-  isFilterToggleMenuActive:false,
-  isFeaturedActive:false,
-  isSearchMenuActive:false,
-  isAddCartMenuActive:false,
-  inputValueSearchMenu:''
+  isMenuActive: false,
+  isFilterToggleMenuActive: false,
+  isFeaturedActive: false,
+  isSearchMenuActive: false,
+  isAddCartMenuActive: false,
+  isSpinnerActive: false,
+  inputValueSearchMenu: "",
 };
 
 const appSlice = createSlice({
@@ -45,9 +47,21 @@ const appSlice = createSlice({
     setIsAddCartMenuActive: (state, action) => {
       state.isAddCartMenuActive = action.payload;
     },
+    setIsSpinnerActive: (state, action) => {
+      state.isSpinnerActive = action.payload;
+    },
   },
 });
 
-export const {setIslogin,setIsMenuActive,setIsFilterToggleMenuActive,setIsFeaturedActive,setIsSearchMenuActive,setInputValueSearchMenu,setIsAddCartMenuActive} = appSlice.actions
+export const {
+  setIslogin,
+  setIsMenuActive,
+  setIsFilterToggleMenuActive,
+  setIsFeaturedActive,
+  setIsSearchMenuActive,
+  setInputValueSearchMenu,
+  setIsAddCartMenuActive,
+  setIsSpinnerActive,
+} = appSlice.actions;
 
-export default appSlice.reducer
+export default appSlice.reducer;

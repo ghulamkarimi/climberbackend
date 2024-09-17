@@ -28,8 +28,8 @@ const store = configureStore({
     getDefaultMiddleware({
       serializableCheck:  {
         ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE', 'persist/FLUSH', 'persist/PURGE'],
-        ignoredActionPaths: ['register', 'rehydrate'],
-        ignoredPaths: ['register', 'rehydrate'],
+        ignoredActionPaths: ['register', 'rehydrate','meta.arg'],
+        ignoredPaths: ['register', 'rehydrate','meta.arg'],
       } ,
     }),
 });

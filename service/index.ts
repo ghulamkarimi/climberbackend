@@ -32,19 +32,31 @@ export const checkToken = () => {
 
 export const getCategories = () => {
   const url = `${Server_Url}/categories/getAll`;
-  return axios.get(url);
+  return axiosJwt.get(url);
 };
 
 
 export const createCategories = (category: ICategories) => {
+  const formData = new FormData();
+  formData.append("userId", category._id);
+  formData.append("categories", category.categories);
+  formData.append("title", category.title);
+  formData.append("photo", category.photo as File  );
+  formData.append("description", category.description);
+  
   const url = `${Server_Url}/categories/create`;
-  return axios.post(url, category);
-}
+  return axios.post(url, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    }
+  });
+};
 
-export const deleteCategories = (id: string) => {
-  const url = `${Server_Url}/categories/delete/${id}`;
-  return axios.delete(url);
-}
+
+export const deleteCategories = (userId: string, categorieId: string ) => {
+  const url = `${Server_Url}/categories/delete`;
+  return axios.delete(url, { data: { userId, categorieId } });
+};
 
 export const editCategories = (id: string, category: ICategories) => {
   const url = `${Server_Url}/categories/edit/${id}`;

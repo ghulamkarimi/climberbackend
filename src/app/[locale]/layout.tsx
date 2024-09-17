@@ -32,7 +32,7 @@ export default async function LocaleLayout({
       lang={locale}
     >
       <NextIntlClientProvider messages={messages}>
-      
+     
         <div>
           <TopHeader />
         </div>
@@ -40,7 +40,7 @@ export default async function LocaleLayout({
         <div>
           <Menu />
         </div>
-        <MaxWithWrapper>
+        <MaxWithWrapper className="">
           <div className="">
             <AnnouncementText />
           </div>
