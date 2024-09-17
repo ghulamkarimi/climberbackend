@@ -1,6 +1,7 @@
 import { setIsSpinnerActive } from "@/feature/reducers/appSlice";
 import {
   deleteCategoriesApi,
+  displayAllCategories,
   displayCategory,
 } from "@/feature/reducers/categoriesSlice";
 import { AppDispatch, RootState } from "@/feature/store/store";
@@ -11,20 +12,20 @@ import Spinner from "../Spinner";
 
 interface IDeleteCategories {
   page: "men" | "home";
+  categoryId: string;
 }
 
-const DeleteCategories = ({ page }: IDeleteCategories) => {
+const DeleteCategories = ({ categoryId,page }: IDeleteCategories) => {
   const dispatch = useDispatch<AppDispatch>();
   const userId = localStorage.getItem("userId");
-  const category = useSelector((state: RootState) =>
-    displayCategory(state, userId!)
-  );
+
+
   
   const { isSpinnerActive } = useSelector((state: RootState) => state.app);
  const handleDelete = async () => {
-  console.log("Delete button clicked");
 
-  if (!category) {
+
+  if (!categoryId) {
     NotificationService.error("No category found to delete.");
     return;
   }
@@ -36,8 +37,8 @@ const DeleteCategories = ({ page }: IDeleteCategories) => {
       case "men":
         try {
           
-          const response = await dispatch(deleteCategoriesApi({ userId: userId!, _id: category._id }));
-          console.log("response", response);
+          const response = await dispatch(deleteCategoriesApi({ userId: userId!, _id:categoryId })).unwrap();
+          console.log("response", response.message);
          
           NotificationService.success("Men category deleted successfully");
         } catch (error: any) {

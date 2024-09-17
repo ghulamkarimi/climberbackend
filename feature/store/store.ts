@@ -34,7 +34,7 @@ const store = configureStore({
     }),
 });
 
-// Überprüfen Sie den State des Users Reducer
+
 store.subscribe(() => {
   console.log('Store state:', store.getState());
 });

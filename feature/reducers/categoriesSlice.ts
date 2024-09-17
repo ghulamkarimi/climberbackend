@@ -43,17 +43,19 @@ export const createCategoriesApi = createAsyncThunk("/categories/createCategorie
 });
 
 export const deleteCategoriesApi = createAsyncThunk(
-  "/categories/deleteCategoriesApi",
-  async ({ userId, _id}: { userId: string; _id: string }) => {
-    try {
-      const response = await deleteCategories(userId, _id );
-      console.log("response",response)
-      return response.data;
-    } catch (error: any) {
-      throw error.response.data.message;
+    "/categories/deleteCategoriesApi",
+    async ({ userId, _id }: { userId: string; _id: string }) => {
+      try {
+        const response = await deleteCategories(userId, _id);
+        console.log("Full response from API:", response); 
+        return response.data; 
+      } catch (error: any) {
+        console.error("Error deleting category:", error); 
+        throw error.response.data.message;
+      }
     }
-  }
-);
+  );
+  
 
 
 export const editCategoriesApi = createAsyncThunk("/categories/editCategoriesApi", async ({ _id, category }: { _id: string, category: ICategories }) => {

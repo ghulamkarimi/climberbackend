@@ -55,7 +55,7 @@ export const createCategories = (category: ICategories) => {
 
 export const deleteCategories = (userId: string, _id: string ) => {
   const url = `${Server_Url}/categories/delete`;
-  return axios.delete(url, { data: { userId,  _id } });
+  return axios.delete(url, { data: { userId,  categoryId:_id } });
 };
 
 export const editCategories = (id: string, category: ICategories) => {

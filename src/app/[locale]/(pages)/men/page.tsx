@@ -32,7 +32,7 @@ const dispatch = useDispatch<AppDispatch>()
 
 
   useEffect(() => {
-    // Generiere URLs für die Fotos
+   
     const urls: { [key: string]: string | undefined } = {};
     categories.forEach((category) => {
       if (category.photo) {
@@ -45,7 +45,7 @@ const dispatch = useDispatch<AppDispatch>()
     });
     setPhotoURLs(urls);
     return () => {
-      // Cleanup: Release object URLs
+      
       Object.values(urls).forEach((url) => url && URL.revokeObjectURL(url));
     };
   }, [categories]);
@@ -80,7 +80,7 @@ const dispatch = useDispatch<AppDispatch>()
                   <div className="p-2 bg-gray-200 rounded-full cursor-pointer transition-transform duration-200 hover:bg-gray-300 hover:scale-110">
                     <MdRebaseEdit className="text-blue-600 text-xl" />
                   </div>
-                  <DeleteCategories page ="men"/>
+                  <DeleteCategories categoryId={category._id}  page ="men"/>
                 </div>
               )}
               <div
