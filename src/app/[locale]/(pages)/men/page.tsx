@@ -10,6 +10,8 @@ import CreateCategories from "../../components/categories/createCategories";
 import { MdDelete, MdRebaseEdit } from "react-icons/md";
 import { useEffect, useState } from "react";
 import DeleteCategories from "../../components/categories/DeleteCategories";
+import EditCategories from "../../components/categories/EditCategories";
+
 
 interface ICategoriesProps {
   params: {
@@ -77,9 +79,9 @@ const dispatch = useDispatch<AppDispatch>()
             >
               {userInfo.isAdmin && (
                 <div className="flex items-center justify-end gap-3 mb-4">
-                  <div className="p-2 bg-gray-200 rounded-full cursor-pointer transition-transform duration-200 hover:bg-gray-300 hover:scale-110">
-                    <MdRebaseEdit className="text-blue-600 text-xl" />
-                  </div>
+                
+                  <EditCategories categoryId={category._id} page="men"/>
+               
                   <DeleteCategories categoryId={category._id}  page ="men"/>
                 </div>
               )}

@@ -1,12 +1,14 @@
 {
-  "name": "frontend",
+  "name": "climber",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "next dev -p 3000", 
+    "build": "next build", 
+    "start": "next start -p 3506", 
+    "setup": "npm install && npm run build && pm2 start --name climber npm -- start --update-env --time && pm2 save", 
+    "deploy": "git pull --no-rebase && npm install && npm run build && pm2 restart climber --update-env --time && pm2 save", 
+    "cp": "node cli/cp.mjs" 
   },
   "dependencies": {
     "@react-hook/media-query": "^1.1.1",
